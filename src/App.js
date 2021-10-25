@@ -1,10 +1,16 @@
+import React from 'react';
+import { Container } from 'react-bootstrap';
+import Header from './Components/Header';
 
-function App() {
+const App = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+      <Header />
+      <main className='py-3'>
+        <Container></Container>
+      </main>
+    </>
   );
-}
+};
 
 export default App;
