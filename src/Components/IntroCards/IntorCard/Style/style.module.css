@@ -1,0 +1,22 @@
+.midCard{
+    background-image: url('/src/Asset/images/intro\ message\ background.png') !important;
+    color: white !important;
+    padding: 30px !important;
+    border-radius: 10px !important;
+}
+
+.hd{
+   color: white;
+}
+
+.im{
+    border-radius: 10px !important;
+    width: 100% !important;
+    max-width: 330px !important;
+    height: auto !important;
+}
+
+.fstCol
+{
+    margin-right: 50px !important;
+}

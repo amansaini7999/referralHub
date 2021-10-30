@@ -1,0 +1,14 @@
+.crd{
+    background-color: rgb(46, 46, 173) !important;
+    border-radius: 15px !important;
+    color: white !important;
+    min-height: 410px !important;
+}
+
+.rw{
+    margin-bottom: 20px !important;
+} 
+
+.small{
+    font-size: small !important;
+}
