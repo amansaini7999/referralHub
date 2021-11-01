@@ -2,6 +2,8 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import Header from './Components/Header';
 import IntroCards from './Components/IntroCards';
+import Footer from './Components/Footer/Footer';
+
 
 const App = () => {
   return (
@@ -12,6 +14,7 @@ const App = () => {
           <IntroCards/>
         </Container>
       </main>
+      <Footer/>
     </>
   );
 };
