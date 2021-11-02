@@ -1,0 +1,31 @@
+.footer {
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  background-color: rgb(0, 0, 0);
+  color: #ffffff;
+  padding-left: 15rem;
+  padding-right: 4rem;
+  align-self: stretch;
+  width: auto;
+}
+
+.content {
+  margin-bottom: 1rem;
+}
+
+.footer h3 {
+  text-align: left;
+  font-weight: bold;
+  color: #ffffff;
+  padding-bottom: 2rem;
+  font-size: 18px;
+}
+
+.logo {
+  font-size: 36px !important;
+  width: max-content;
+}
+
+.footer p {
+  font-size: 14px;
+}
