@@ -1,0 +1,40 @@
+.card {
+  height: 600px !important;
+  width: 700px !important;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 15px !important;
+  border-color: #0033aa !important;
+  border-width: 3px !important;
+}
+.headings {
+  font-size: 25px;
+  color: #0033aa !important;
+  font-weight: bold;
+  margin-top: 10px !important;
+  position: relative;
+  left: 270px;
+}
+.desc {
+  margin-top: 15px !important;
+  position: relative;
+  left: 220px;
+}
+.close {
+  position: relative;
+  left: 650px;
+  margin-top: 20px !important;
+  height: 10px !important;
+  color: black !important;
+}
+.line {
+  height: 7px !important;
+  width: 45px !important;
+  background-color: #fd6c9e;
+  margin-top: 15px !important;
+  margin-left: 300px !important;
+  border-radius: 15px !important;
+}
+.cont {
+  margin: 20px !important;
+}
