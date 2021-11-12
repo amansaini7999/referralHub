@@ -1,0 +1,28 @@
+.card {
+  border-radius: 10px !important;
+  margin-top: 15px !important;
+}
+
+.backg {
+  background-image: url("/src/Asset/images/intro\ message\ background.png") !important;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+  height: 410px !important;
+}
+.details {
+  height: 320px !important;
+}
+.im {
+  background-image: url("/src/Asset/images/refree.jpg") !important;
+  background-size: cover;
+  height: 230px;
+  width: 220px;
+  position: absolute;
+  top: 250px;
+  left: 70px;
+  border-radius: 75px 75px 80px 80px !important;
+  border-color: white;
+  border-width: 7px;
+  border-style: solid;
+  box-shadow: 1px 3px 9px grey;
+}

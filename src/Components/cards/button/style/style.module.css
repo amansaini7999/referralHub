@@ -1,0 +1,13 @@
+.buttonStyle {
+  background-color: #0033aa;
+  border-radius: 30px;
+  border: 2px solid blue;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 10px;
+  position: absolute;
+  right: 300px;
+  width: 130px !important;
+  height: 50px;
+}

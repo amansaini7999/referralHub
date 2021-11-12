@@ -1,0 +1,23 @@
+.companyname {
+  padding: 40px;
+}
+.desc {
+  position: relative;
+  left: 110px;
+  width: 380px !important;
+  margin-bottom: 10px;
+  height: 100px !important;
+}
+
+.input,
+.drpdown {
+  position: relative;
+  left: 100px;
+  width: 400px !important;
+  margin-bottom: 10px;
+}
+.or {
+  position: relative;
+  left: 300px;
+  margin-bottom: 15px;
+}

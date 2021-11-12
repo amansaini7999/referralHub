@@ -1,0 +1,11 @@
+.carddetails {
+  position: absolute;
+  bottom: 100px;
+  left: 70px;
+}
+
+.name {
+  font-size: 40px;
+  font-weight: 120px;
+  color: black;
+}

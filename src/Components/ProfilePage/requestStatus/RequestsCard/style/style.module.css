@@ -1,0 +1,22 @@
+.headings {
+  font-size: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  color: gray;
+  font-weight: bold;
+}
+.title {
+  padding: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #6a6a72;
+}
+.hr {
+  color: gray;
+
+  margin-left: 0.7% !important;
+}
+
+.rw {
+  padding-left: 10px !important;
+}
