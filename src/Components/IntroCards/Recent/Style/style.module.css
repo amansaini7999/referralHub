@@ -1,0 +1,29 @@
+
+.midCard{
+    border-radius: 10px !important;
+}
+
+.para{
+    margin-bottom: 0px !important;
+    font-size: smaller !important;
+    margin: 0px auto !important;
+
+}
+p{
+    max-width: 150px !important;
+}
+
+.midPara{
+    margin: 0px auto;
+    font-size: smaller !important;
+    margin-bottom: 20px;
+    max-width: 150px !important;
+    text-align: center !important;
+
+}
+
+.hdPara{
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}

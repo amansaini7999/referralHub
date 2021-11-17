@@ -1,0 +1,10 @@
+.card{
+    padding: 25px !important;
+    border-radius: 10px !important;
+    margin-top: 15px !important;
+}
+
+.headerDiv{
+    /* max-width: 1000px; */
+    text-align: center !important;
+}
