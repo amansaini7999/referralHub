@@ -1,5 +1,7 @@
 import GoogleLogin from 'react-google-login';
 import { Grid, Paper } from '@material-ui/core';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 const paperStyle = {
   padding: 20,
   height: '73vh',
@@ -7,11 +9,11 @@ const paperStyle = {
   margin: '0 auto',
 };
 function App() {
-  // const [loginData, setLoginData] = useState(
-  //   localStorage.getItem('loginData')
-  //     ? JSON.parse(localStorage.getItem('loginData'))
-  //     : null
-  // );
+  const [loginData, setLoginData] = useState(
+    localStorage.getItem('loginData')
+      ? JSON.parse(localStorage.getItem('loginData'))
+      : null
+  );
 
   const handleFailure = (result) => {
     alert(result);
@@ -49,7 +51,9 @@ function App() {
             <h5>There's no charge upon registration</h5>
           </Grid>
           <Grid align='center'>
-            {
+            {loginData ? (
+              <div>history.push('/');</div>
+            ) : (
               <GoogleLogin
                 clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                 buttonText='Log in with Google'
@@ -57,7 +61,7 @@ function App() {
                 onFailure={handleFailure}
                 cookiePolicy={'single_host_origin'}
               ></GoogleLogin>
-            }
+            )}
           </Grid>
         </header>
       </div>
