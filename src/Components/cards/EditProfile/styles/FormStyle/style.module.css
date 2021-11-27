@@ -1,0 +1,83 @@
+.formArea {
+  margin: 0 auto;
+}
+
+.Modal {
+  overflow: hidden !important;
+  background-color: #0033aa !important;
+  padding: 3px 4px 3px 3px;
+  border-radius: 9px;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.editProfileHeader {
+  border-bottom: 3px solid #0033aa !important;
+}
+
+.editProfileFooter {
+  border-top: 3px solid #0033aa !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.editProfileTitle {
+  margin: 0 auto;
+  padding-left: 88px;
+  color: #0033aa !important;
+}
+
+.submitButton {
+  background-color: #0033aa;
+  border-radius: 30px;
+  border: 2px solid blue;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 10px;
+  width: 130px;
+  height: 50px;
+}
+
+.submitButton:hover {
+  background-color: #0033aadf;
+  border-style: solid;
+  border-color: #0033aa94;
+}
+
+.submitButton:active {
+  background-color: #00257c;
+}
+
+@media screen and (max-width: 565px) {
+  .formArea {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .formArea {
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 418px) {
+  .formArea {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 372px) {
+  .formArea {
+    width: 270px;
+  }
+}
+
+@media screen and (max-width: 338px) {
+  .formArea {
+    width: 240px;
+  }
+}
