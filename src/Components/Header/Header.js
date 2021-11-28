@@ -1,28 +1,28 @@
-import React from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import React from 'react';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
-import logo from "../../Asset/images/logoR.png";
+import logo from '../../Asset/images/logoR.png';
 
 const Header = () => {
   return (
     <header>
-      <Navbar bg="light" expand="lg" collapseOnSelect>
+      <Navbar bg='light' expand='lg' collapseOnSelect>
         <Container>
-          <Navbar.Brand href="/">
-            <img src={logo} alt="logo" />
+          <Navbar.Brand href='/'>
+            <img src={logo} alt='logo' />
             <b>REFERRAL HUB</b>
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto">
-              <Nav.Link href="/">
-                <i class="fas fa-user"></i>
+          <Navbar.Toggle aria-controls='basic-navbar-nav' />
+          <Navbar.Collapse id='basic-navbar-nav'>
+            <Nav className='ms-auto'>
+              <Nav.Link href='/'>
+                <i class='fas fa-user'></i>
               </Nav.Link>
-              <Nav.Link href="/urlll">
-                <i class="fas fa-bell"></i>
+              <Nav.Link href='/notifications'>
+                <i class='fas fa-bell'></i>
               </Nav.Link>
-              <Nav.Link href="/urlll">
-                <i class="fas fa-sign-out-alt"></i>
+              <Nav.Link href='/login'>
+                <i class='fas fa-sign-out-alt'></i>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
