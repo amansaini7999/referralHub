@@ -1,0 +1,53 @@
+.firstCard {
+  width: 30%;
+  border: 1rem solid rgb(46, 46, 173);
+  border-radius: 22px;
+  text-align: center;
+  margin: auto;
+  padding: 1% 3%;
+  background-color: #fff;
+}
+.closeButton {
+  margin-left: 99%;
+}
+.dropDownBtn {
+  background-color: grey;
+  color: grey;
+}
+.heading {
+  font-weight: bolder;
+  color: rgb(46, 46, 173);
+  padding: 2%;
+}
+.text {
+  font-size: 15px;
+  padding: 10px 1px;
+  display: inline;
+  color: black;
+  margin-bottom: 2px;
+}
+.heading-third {
+  font-size: 15px;
+  margin: 2%;
+}
+.input-fields {
+  margin: 10px;
+  width: 30rem;
+  height: 4rem;
+  border: 2px solid black;
+  border-radius: 5px;
+  text-align: left;
+  padding: 10px;
+}
+.horizotal-line {
+  width: 4rem;
+  border: 4px solid #f83395;
+  color: #f83395;
+  border-radius: 100px;
+  margin: auto;
+  margin-top: 1rem;
+  opacity: 0.9;
+}
+.requestBtn {
+  padding: 2%;
+}
