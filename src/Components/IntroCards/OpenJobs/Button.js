@@ -2,7 +2,7 @@ import React from 'react';
 
 const buttonStyle = {
   margin: '10px 0',
-  backgroundColor: 'rgb(46, 46, 173)',
+  backgroundColor: '#0033aa',
   maxWidth: '155px',
   color: 'white',
   borderRadius: '10px',

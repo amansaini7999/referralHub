@@ -3,12 +3,14 @@ import { Card, Row } from "react-bootstrap";
 import styles from "./style/style.module.css";
 import RefereeInfo from "./refreedetails";
 import ReferrerInfo from "./referrerdetails";
+import EditProfile from '../../cards/EditProfile'
 
 const ProfileCard = ({ isReferee }) => {
   return (
     <Card className={styles.card}>
       <Row className={styles.backg}></Row>
       <Row className={styles.im}></Row>
+      <EditProfile type={isReferee?"referee":"referrer"}/>
       <Row className={styles.details}>
         {isReferee ? (
           <RefereeInfo

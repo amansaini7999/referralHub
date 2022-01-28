@@ -6,9 +6,10 @@ import Recent from './Recent';
 import styles from './Style/styles.module.css';
 import AddJobs from './AddJobs';
 import OpenJobs from './OpenJobs';
+import Refreq from './refreq';
 
 
-const Intro = () => {
+const Intro = ({referral}) => {
     return (
     <Container>
     <Row>
@@ -18,7 +19,8 @@ const Intro = () => {
         </Col>
         <Col xs={8}>
         <Row className={styles.rw}><IntroCard/></Row>
-        <Row className={styles.rw}><AddJobs/></Row>
+        {referral?<Row className={styles.rw}><AddJobs/></Row>:<Row className={styles.rw}><Refreq/></Row>}
+        
         </Col>
         <Col><Recent/></Col>
     </Row>

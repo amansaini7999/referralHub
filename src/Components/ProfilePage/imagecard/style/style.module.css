@@ -10,7 +10,7 @@
   height: 410px !important;
 }
 .details {
-  height: 320px !important;
+  min-height: 230px !important;
 }
 .im {
   background-image: url("/src/Asset/images/refree.jpg") !important;

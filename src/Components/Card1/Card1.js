@@ -3,10 +3,11 @@ import "./Card1.css"
 import { Card,FormControl,InputGroup,Modal,DropdownButton,CloseButton} from 'react-bootstrap'
 import Button from '../IntroCards/AppButton'
   
+// Card to Request Job Referral
 function Card1()
 {
     return (
-        <Card className="text-center firstCard" border="primary" style={{ width: '40rem' }}>
+        <Card className="text-center firstCard mt-5 mb-5" border="primary" style={{ width: '40rem' }}>
             
     <CloseButton className="closeButton"/>
   <Card.Body>
