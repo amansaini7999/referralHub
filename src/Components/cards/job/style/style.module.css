@@ -21,3 +21,6 @@
   left: 300px;
   margin-bottom: 15px;
 }
+.txtArea{
+  overflow: auto !important;
+}

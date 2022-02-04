@@ -1,0 +1,24 @@
+.mainCard{
+    margin: 8px 27px !important;
+    padding: 18px !important;
+    background-color: #f8f9fa !important;
+    border-radius: 15px !important;
+    text-align: center !important;
+    font-weight: 500 !important;
+    color: #0d0d0d !important;
+    font-size: large !important;
+
+}
+
+.section{
+    margin-bottom: 10px !important;
+}
+.desc{
+    background-color: white !important;
+    border-radius: 7px !important;
+    font-size: 14px !important;
+    font-weight: 100 !important;
+    text-align: start !important;
+    padding: 16px !important;
+    white-space: pre-line !important;
+}

@@ -2,11 +2,10 @@ import React from "react";
 import { Row, Card, CloseButton } from "react-bootstrap";
 import styles from "./style/style.module.css";
 import JobComp from "./job";
-import Button from "./button";
 
-const func = () => {
-  console.log("button click");
-};
+// const func = () => {
+//   console.log("button click");
+// };
 
 const Cards = (props) => {
   let container = null;
@@ -30,9 +29,9 @@ const Cards = (props) => {
       <Row className={styles.desc}>{props.desc}</Row>
       <Row className={styles.line}></Row>
       <Row className={styles.cont}>{container}</Row>
-      <Row>
+      {/* <Row>
         <Button label="CREATE" handleClick={func} />
-      </Row>
+      </Row> */}
     </Card>
   );
 };

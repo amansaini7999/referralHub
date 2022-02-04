@@ -1,0 +1,28 @@
+.card{
+    margin-bottom: 35px !important;
+    padding: 25px !important;
+    border-radius: 16px !important;
+}
+.heading{
+    margin-bottom: 0px !important;
+}
+.headingSection{
+    margin-bottom: 7px !important;
+}
+.middleSection{
+    margin-bottom: 15px !important;
+    font-weight: 500 !important;
+    color: #0d0d0d !important;
+}
+.description{
+    min-height: 80px !important;
+    background-color: #f8f9fa !important;
+    color: black !important;
+    border-radius: 14px !important;
+    padding: 15px 20px !important;
+    margin-bottom: 7px !important;
+}
+
+.buttonSection{
+    text-align: center;
+}

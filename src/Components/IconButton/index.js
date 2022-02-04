@@ -7,9 +7,11 @@ import styles from "./styles/style.module.css";
  */
 const IconButton = ({ icon, onClick, alt }) => {
   return (
+    <div className="d-flex flex-row-reverse">
     <button className={styles.iconButton} onClick={onClick}>
       <img src={icon} alt={alt ? alt : "Icon Button"}></img>
     </button>
+    </div>
   );
 };
 
