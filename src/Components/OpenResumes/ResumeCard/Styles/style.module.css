@@ -1,0 +1,11 @@
+.resumeCard{
+    margin-bottom: 35px !important;
+    padding: 25px !important;
+    border-radius: 16px !important;
+}
+
+.cardSection{
+    margin-bottom: 15px !important;
+    font-weight: 500 !important;
+    color: #0d0d0d !important;
+}

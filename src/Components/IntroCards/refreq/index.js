@@ -3,6 +3,7 @@ import { Card,Row } from 'react-bootstrap'
 import styles from './styles/style.module.css'
 import Button from '../AppButton'
 import { useHistory } from 'react-router-dom'
+import ButtonStyles from '../../cards/EditProfile/styles/FormStyle/style.module.css'
 
 
 
@@ -19,9 +20,9 @@ const Refreq = () => {
             <Row className="justify-content-center">
                <h4 className={styles.headerDiv}>If you have a Job ID / Link. You can directly request from here.</h4> 
             </Row>
-            <Row className="justify-content-center">
-                <Button label="Click Here" handleClick={func}/>
-            </Row>
+            <div style={{textAlign : "center"}}>
+                <button className={ButtonStyles.submitButton} onClick={func}>Click Here</button>
+            </div>
         </Card>
     )
 }

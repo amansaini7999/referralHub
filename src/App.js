@@ -6,12 +6,14 @@ import Header from '../src/Components/Header/Header';
 import IntroCards from './Components/IntroCards';
 import Footer from './Components/Footer/Footer';
 import Profile from "./Components/ProfilePage";
-
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
+import OpenJobs from "./Components/OpenJobs";
+import OpenResumes from "./Components/OpenResumes";
+import Submitted from "./Components/Submitted";
 
 // const ref=false;
 //install npm install react-icons --save
@@ -28,6 +30,7 @@ const App = () => {
                 <main className='py-3 bg-light contextual'>
                   <Container>
                     <IntroCards referral={false}/>
+                    <OpenJobs/>
                   </Container>
                 </main>
               </>
@@ -41,6 +44,7 @@ const App = () => {
                 <main className='py-3 bg-light contextual'>
                   <Container>
                     <IntroCards referral={true}/>
+                    <OpenResumes/>
                   </Container>
                 </main>
               </>
@@ -61,6 +65,13 @@ const App = () => {
           <Route exact path="/refreq">
             <Card1/>
           </Route>
+          <Route exact path="/refreq/submitted">
+            <Submitted/>
+          </Route>
+          <Route exact path="/referral/createjob/submitted">
+            <Submitted/>
+          </Route>
+
           
         </Switch>
       <Footer/>
@@ -74,3 +85,4 @@ const App = () => {
 };
 
 export default App;
+

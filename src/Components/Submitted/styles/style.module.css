@@ -1,0 +1,15 @@
+.mainCard{
+    margin: 50px auto !important;
+    max-width: 650px !important;
+    border-color: #3459e6 !important;
+    text-align: center !important;
+    padding: 15px 20px !important;
+    min-height: 300px !important;
+    border-radius: 30px !important;
+}
+
+.image{
+    max-width: 40%;
+    height: auto;
+    margin: 10px auto;
+}
