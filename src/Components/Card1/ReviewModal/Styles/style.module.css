@@ -1,0 +1,30 @@
+.headings {
+    text-align: center;
+    max-width: 500px;
+    margin: 0px auto;
+    font-size: 25px;
+    color: #0033aa !important;
+    font-weight: bold;
+    margin-top: 20px !important;
+}
+.desc {
+    text-align: center;
+    max-width: 500px;
+    margin: 0px auto;
+    margin-top: 15px !important;
+}
+
+.line {
+    text-align: center;
+    margin: 0px auto;
+    height: 7px !important;
+    width: 45px !important;
+    background-color: #fd6c9e;
+    margin-top: 15px !important;
+    /* margin-left: 300px !important; */
+    border-radius: 15px !important;
+}
+
+.mainCard{
+    border-radius: 150px !important;
+}

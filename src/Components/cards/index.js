@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Card, CloseButton } from "react-bootstrap";
+import { Row, Card } from "react-bootstrap";
 import styles from "./style/style.module.css";
 import JobComp from "./job";
 
@@ -23,16 +23,13 @@ const Cards = (props) => {
   }
 
   return (
-    <Card className={styles.card}>
-      <CloseButton className={styles.close} />
-      <Row className={styles.headings}>{props.heading}</Row>
-      <Row className={styles.desc}>{props.desc}</Row>
-      <Row className={styles.line}></Row>
-      <Row className={styles.cont}>{container}</Row>
-      {/* <Row>
-        <Button label="CREATE" handleClick={func} />
-      </Row> */}
-    </Card>
+    <div className={styles.card}>
+      {/* <CloseButton className={styles.close} /> */}
+      <div className={styles.headings}>{props.heading}</div>
+      <div className={styles.desc}>{props.desc}</div>
+      <div className={styles.line}></div>
+      <div className={styles.cont}>{container}</div>
+    </div>
   );
 };
 

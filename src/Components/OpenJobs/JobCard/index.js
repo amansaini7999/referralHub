@@ -1,13 +1,18 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import ButtonStyle from '../../cards/EditProfile/styles/FormStyle/style.module.css';
 import Styles from './Styles/style.module.css';
+import ReviewModal from '../../Card1/ReviewModal';
+// import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
-function fun()
-{
-    console.log("button click");
-}
+
 const JobCard = ({obj}) => {
+    // let history = useHistory();
+
+    function SubmitFunction()
+    {
+      console.log("Request Submitted");
+      window.location.reload(false);
+    }    
   return <Card className={Styles.card}>
             <div className={Styles.headingSection}>
                 <h4 className={Styles.heading}>{obj.JobGiver}</h4>
@@ -22,7 +27,7 @@ const JobCard = ({obj}) => {
                 {obj.JobDecs}
             </div>
             <div className={Styles.buttonSection}>
-            <button className={ButtonStyle.submitButton} onClick={fun}>Request</button>
+            <ReviewModal buttonLabel={"REQUEST"} type={ "referralreq"} heading={"Confirm"} msg={"Kindly check your details"} SubmitFunction={SubmitFunction} company={obj.Company} jobId={obj.JobID} jobLink={obj.JobLink}/>
             </div>
         </Card>;
 };

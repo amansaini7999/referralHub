@@ -52,6 +52,72 @@
   background-color: #00257c;
 }
 
+.submitButtonR {
+  background-color: #de0404;
+  border-radius: 30px;
+  border: 2px solid rgb(255, 0, 0);
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 10px;
+  width: 130px;
+  height: 50px;
+}
+
+.submitButtonR:hover {
+  background-color: #e90808df;
+  border-style: solid;
+  border-color: #de040494;
+}
+
+.submitButtonR:active {
+  background-color: #b40a0a;
+}
+
+.submitButtonY {
+  background-color: #d8d810;
+  border-radius: 30px;
+  border: 2px solid #f2f204;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 10px;
+  width: 130px;
+  height: 50px;
+}
+
+.submitButtonY:hover {
+  background-color: #d1d103;
+  border-style: solid;
+  border-color: #dbdb00;
+}
+
+.submitButtonY:active {
+  background-color: #b1b107;
+}
+
+.submitButtonG {
+  background-color: #22a822;
+  border-radius: 30px;
+  border: 2px solid #1fdb1f;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 10px;
+  width: 130px;
+  height: 50px;
+}
+
+.submitButtonG:hover {
+  background-color: #24bb24;
+  border-style: solid;
+  border-color: #09b609;
+}
+
+.submitButtonG:active {
+  background-color: #088d08;
+}
+
 @media screen and (max-width: 565px) {
   .formArea {
     width: 400px;

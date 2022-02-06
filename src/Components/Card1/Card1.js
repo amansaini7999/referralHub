@@ -40,7 +40,7 @@ function func()
 
 }
 
-
+// this is for referral req 
 function Card1()
 {
   const [company,setCompany] = useState("");
@@ -50,7 +50,7 @@ function Card1()
 
   function SubmitFunction()
   {
-    console.log("Submitted");
+    console.log("Submitted referral req");
     let path = "/refreq/submitted";
     history.push(path);
   }
@@ -96,7 +96,7 @@ function Card1()
           aria-describedby="basic-addon2"/>
                   
           <br/>
-          <ReviewModal isReferReq={true} SubmitFunction={SubmitFunction} company={company} jobId={jobId} jobLink={jobLink}/>
+          <ReviewModal buttonLabel={"REQUEST"} type={ "createreferralreq"} heading={"Review"} msg={"Kindly check your details"} isReferReq={true} SubmitFunction={SubmitFunction} company={company} jobId={jobId} jobLink={jobLink}/>
         </Card.Body>
       </Card>
   )

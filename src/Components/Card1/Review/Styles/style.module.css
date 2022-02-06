@@ -1,5 +1,5 @@
 .mainCard{
-    margin: 8px 27px !important;
+    margin: 8px 140px !important;
     padding: 18px !important;
     background-color: #f8f9fa !important;
     border-radius: 15px !important;
@@ -21,4 +21,22 @@
     text-align: start !important;
     padding: 16px !important;
     white-space: pre-line !important;
+}
+
+.txtInput{
+    margin: 24px auto;
+    max-width: 463px;
+}
+
+.txtArea
+{
+    width: 100%;
+    /* height: 150px; */
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
 }

@@ -39,6 +39,8 @@ const companyname = [
   },
 ];
 
+//this is for create job
+
 
 const CreateJob = (props) => {
   const [company,setCompany] = useState("");
@@ -49,13 +51,13 @@ const CreateJob = (props) => {
 
   function SubmitFunction()
   {
-    console.log("Submitted");
+    console.log("Submitted new job");
     let path = "/referral/createjob/submitted";
     history.push(path);
   }
   return (
     <div>
-      <Row className={styles.drpdown}>
+      <div className={styles.drpdown}>
         <InputGroup className="mb-3">
         <FormControl onChange={(e)=>{setCompany(e.target.value)}} value={company}
             placeholder="Company Name"
@@ -71,24 +73,25 @@ const CreateJob = (props) => {
               ))}
             </DropdownButton>
         </InputGroup>
-      </Row>
-      <Row className={styles.input}>
+      </div>
+      <div className={styles.input}>
         <Form.Group className="mb-3">
           <Form.Control type="text" placeholder="Job ID" onChange={(e)=>{setJobId(e.target.value)}} value={jobId}/>
         </Form.Group>
-      </Row>
+      </div>
 
-      <Row className={styles.or}>OR</Row>
-      <Row className={styles.input}>
+      <div className={styles.or}>OR</div>
+      <div className={styles.input}>
         <Form.Group className="mb-3">
           <Form.Control type="text" placeholder="Job Link" onChange={(e)=>{setJobLink(e.target.value)}} value={jobLink}/>
         </Form.Group>
-      </Row>
-      <Row className={styles.desc}>
-        <Form.Control className={styles.txtArea} as="textarea" placeholder="Description"  onChange={(e)=>{setJobDesc(e.target.value)}} value={jobDesc}/>
-      </Row>
-      <div style={{textAlign: "center" , marginTop: "20px"}}>
-        <ReviewModal isReferReq={false} SubmitFunction={SubmitFunction} company={company} jobId={jobId} jobLink={jobLink} desc={jobDesc}/>
+      </div>
+      <div className={styles.desc}>
+        {/* <Form.Control as="textarea" placeholder="Description"  onChange={(e)=>{setJobDesc(e.target.value)}} value={jobDesc}/> */}
+        <textarea className={styles.txtArea} placeholder="Description"  onChange={(e)=>{setJobDesc(e.target.value)}} value={jobDesc} cols="30" rows="4"></textarea>
+      </div>
+      <div style={{textAlign: "center" , marginTop: "5px"}}>
+        <ReviewModal buttonLabel={"REQUEST"} type={"createjob"} heading={"Review"} msg={"Kindly check your details"} isReferReq={false} SubmitFunction={SubmitFunction} company={company} jobId={jobId} jobLink={jobLink} desc={jobDesc}/>
       </div>
     </div>
   );
