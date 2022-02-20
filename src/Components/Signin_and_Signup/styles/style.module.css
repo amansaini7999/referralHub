@@ -1,0 +1,73 @@
+.container{
+    background-image: url(../../../Asset/images/bg\ for\ login\ sign\ up.png);
+    padding-bottom: 100px;
+}
+
+.midCard{
+    max-width: 600px;
+    background-color: white;
+    min-height: 300px;
+    border-radius: 16px;
+    /* padding: 40px; */
+    margin: 0px auto;
+}
+
+.heading{
+    padding: 30px;
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.headingLogo{
+    margin-left: 60px;
+    max-height: 57px;
+}
+
+.headingText{
+    font-size: 55px;
+}
+
+.buttonF{
+    width: 49%;
+    border-radius: 16px 0px 0px 0px!important;
+    margin-right: 1%;
+    margin: 3px;
+    padding: 16px !important;
+    font-size: larger !important;
+    background-color: rgb(142 142 166);
+    border: none;
+    color: white
+
+
+}
+
+.buttonS{
+    width: 49%;
+    border-radius: 0px 16px 0px 0px!important;
+    margin-left: 1%;
+    margin: 3px;
+    padding: 16px !important;
+    font-size: larger !important;
+    background-color: rgb(142 142 166);
+    border: none;
+    color: white
+
+}
+
+.body{
+    text-align: center;
+    padding: 25px;
+}
+
+.gglbtn{
+    padding: 8px;
+    border: none;
+    min-width: 50%;
+    background-color: rgb(245, 244, 244);
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.link{
+    color: black;
+}
