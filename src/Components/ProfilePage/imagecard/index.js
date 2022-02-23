@@ -1,30 +1,47 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Card, Row } from "react-bootstrap";
 import styles from "./style/style.module.css";
 import RefereeInfo from "./refreedetails";
 import ReferrerInfo from "./referrerdetails";
 import EditProfile from '../../cards/EditProfile'
+import { useState } from "react";
 
-const ProfileCard = ({ isReferee }) => {
+const ProfileCard = ({ userData, token, id,userId }) => {
+  
+  // console.log(userData);
+
+  const [data , setData] = useState(userData);
+  useEffect(()=> {
+    setData(userData);
+  },[userData]);
+
+  const isReferee = data.isReferee;
+  
+
   return (
     <Card className={styles.card}>
       <Row className={styles.backg}></Row>
       <Row className={styles.im}></Row>
-      <EditProfile type={isReferee?"referee":"referrer"}/>
+      {id===userId?<EditProfile token={token} data ={data} setData={setData} type={isReferee?"referee":"referrer"}/>:<div className={styles.buffer}></div>}
       <Row className={styles.details}>
         {isReferee ? (
           <RefereeInfo
-            year="2023"
-            infotext="BTech CSE Student | Flutter Developer | UI/UX Designer"
-            name="Astha Thakur"
-            college="AMITY University"
-            githublink="https://github.com"
-            leetcodelink="https://leetcode.com"
-            linkedinlink="https://www.linkedin.com/feed/"
-            resume="https://docs.google.com/document/d/1dOaSpZAaRUMCR4P5OO1caAbppgPziZs9mQ-WHwZCz9k/edit?usp=sharing"
+            year={data.graduating_year}
+            infotext={data.infotext}
+            name={data.name}
+            college={data.institute}
+            githublink={data.github}
+            leetcodelink={data.leetcode}
+            linkedinlink={data.linkedin}
+            resume={data.resume_link}
+            codeforcesLink={data.codeforces}
+            codechefLink = {data.codechef}
+            email={data.email}
           />
         ) : (
-          <ReferrerInfo infotext="SDE 2 Paytm" name="Astha Thakur" />
+          <ReferrerInfo infotext={data.infotext} name={data.name} leetcodelink={data.leetcode}
+            email={data.email}
+            linkedinlink={data.linkedin} current_company={data.current_company}  githublink={data.github} />
         )}
       </Row>
     </Card>

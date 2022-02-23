@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 
 import logo from "../../Asset/images/logoR.png";
 
-const Header = ({auth, setAuth}) => {
+const Header = ({auth, setAuth, userId}) => {
   // console.log("header " + auth);
   const history = useHistory();
 
@@ -34,7 +34,7 @@ const Header = ({auth, setAuth}) => {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               {auth?<>
-              <Nav.Link href="/user">
+              <Nav.Link href={`/users/${userId}`}>
                 <i className="fas fa-user"></i>
               </Nav.Link>
               <Nav.Link href="/urlll">

@@ -9,3 +9,36 @@
   font-weight: 120px;
   color: black;
 }
+.button {
+  background-color: #515162;
+  border-radius: 30px;
+  border: 2px solid blue;
+  color: white;
+  margin-top: 10px;
+  position: absolute;
+  right: 1170px;
+  width: 100px;
+  height: 40px;
+}
+.rw {
+  padding-bottom: 5px;
+}
+.rightcol {
+  width: 200px !important;
+  position: absolute;
+  bottom: 100px !important;
+  left: 1000px;
+}
+.rwc {
+  font-size: 20px !important;
+  font-weight: bold;
+}
+
+.cl {
+  width: 33%;
+  height: 70px !important;
+}
+
+.icons {
+  height: 70px !important;
+}

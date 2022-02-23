@@ -10,6 +10,7 @@ const useReferrerData = () => {
     phone_number: "",
     job_role: "",
     leetcode: "",
+    infotext: ""
   });
 
   const demoData = {
@@ -21,6 +22,7 @@ const useReferrerData = () => {
     phone_number: "9000000000",
     job_role: "SDE 2",
     leetcode: "https://leetcode.com/james",
+    infotext: "SDE2 Paytm"
   };
 
   function handle(e) {

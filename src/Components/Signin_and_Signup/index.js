@@ -6,9 +6,12 @@ import googleIcon from '../../Asset/images/google.svg'
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { useHistory } from 'react-router-dom'
+import { addUser } from '../../api/user/index'
 
-const LoginSignup = ({setAuth, signin}) => {
+const LoginSignup = ({setAuth, signin, token , setToken}) => {
     const [stu, setStu] = useState(true);
+
+    const user ={};
 
     const history = useHistory();
 
@@ -21,7 +24,17 @@ const LoginSignup = ({setAuth, signin}) => {
 				if (userCred) {
 					setAuth(true);
 					window.localStorage.setItem('auth', 'true');
-                    let path = "/user";
+                    const user = {
+                        name: userCred.user.displayName,
+                        email: userCred.user.email,
+                        isReferee: stu
+                    }
+                    // console.log(user);
+                    userCred.user.getIdToken().then((token) => {
+                        addUser(token, user);
+                    })
+                    const userId = userCred.user.uid;
+                    let path = `users/${userId}`;
                     history.push(path);
 				}
                 
@@ -37,6 +50,15 @@ const LoginSignup = ({setAuth, signin}) => {
 				if (userCred) {
 					setAuth(true);
 					window.localStorage.setItem('auth', 'true');
+                    const user = {
+                        name: userCred.user.displayName,
+                        email: userCred.user.email,
+                        isReferee: stu
+                    }
+                    // console.log(user);
+                    userCred.user.getIdToken().then((token) => {
+                        addUser(token, user);
+                    })
                     let path = "/";
                     history.push(path);
 				}

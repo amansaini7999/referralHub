@@ -23,8 +23,8 @@ import LoginSignup from "./Components/Signin_and_Signup";
 //install npm install react-icons --save
 const App = () => {
   const [auth, setAuth] = useState(false || window.localStorage.getItem('auth') === 'true');
-  const [token, setToken] = useState('');
-  // console.log(auth);
+  const [token, setToken] = useState(null || window.localStorage.getItem('token'));
+  const [userId, setUserId] = useState(null || window.localStorage.getItem('userId'));
 
   useEffect( () => {
 		firebase.auth().onAuthStateChanged((userCred) => {
@@ -33,32 +33,40 @@ const App = () => {
 				window.localStorage.setItem('auth', 'true');
 				userCred.getIdToken().then((token) => {
 					setToken(token);
-          console.log(token);
+          // console.log('callback');
+          window.localStorage.setItem('token', token);
 				});
+        setUserId(userCred.uid);
+        window.localStorage.setItem('userId',userId);
+
 			}
       else{
         setAuth(false);
         setToken('');
         window.localStorage.setItem('auth', 'false');
-        // console.log(auth);
-        // console.log(token);
-        
+        window.localStorage.setItem('token',null);
+        window.localStorage.setItem('userId',null);
       }
 		});
 	}, []);
+
+  // console.log(userId);
+  // console.log(token);
+  // console.log(auth);
+
 
   return (
     <>
       <Router>
       <Switch>
         <Route exact path = '/signup'>
-            <LoginSignup  setAuth={setAuth} signin={false}/>
+            <LoginSignup token={token} setToken={setToken} setAuth={setAuth} signin={false}/>
         </Route>
         <Route exact path = '/signin'>
-            <LoginSignup  setAuth={setAuth} signin={true}/>
+            <LoginSignup token={token} setToken={setToken} setAuth={setAuth} signin={true}/>
         </Route>
         <Route path='/'>
-         <Header auth={auth} setAuth={setAuth}/>
+         <Header auth={auth} userId={userId} setAuth={setAuth}/>
         <Switch>
           <Route exact path="/" render={()=>
             {
@@ -89,8 +97,8 @@ const App = () => {
             }}>
             </Route>
             
-            <Route exact path="/user">
-              <Profile isReferee={true}/>
+            <Route exact path="/users/:userId">
+              <Profile token={token} userId={userId}/>
             </Route>
             <Route exact path="/referral/createjob">
               <Cards

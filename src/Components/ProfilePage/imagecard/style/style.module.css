@@ -8,6 +8,7 @@
   border-top-left-radius: 10px !important;
   border-top-right-radius: 10px !important;
   height: 410px !important;
+  margin-bottom: 25px !important;
 }
 .details {
   min-height: 230px !important;
@@ -25,4 +26,8 @@
   border-width: 7px;
   border-style: solid;
   box-shadow: 1px 3px 9px grey;
+}
+
+.buffer{
+  min-height: 60px;
 }

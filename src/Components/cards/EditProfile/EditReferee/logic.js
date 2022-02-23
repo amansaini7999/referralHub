@@ -13,6 +13,7 @@ const useRefereeData = () => {
     graduating_year: "",
     phone_number: "",
     resume_link: "",
+    infotext: "",
   });
 
   const demoData = {
@@ -27,6 +28,7 @@ const useRefereeData = () => {
     resume_link: "https://googledrive.com/jamesresume",
     graduating_year: 2022,
     phone_number: "1234567890",
+    infotext: "B.E student",
   };
 
   function handle(e) {

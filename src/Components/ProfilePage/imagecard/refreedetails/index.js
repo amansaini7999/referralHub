@@ -2,11 +2,11 @@ import React from "react";
 import { Row, Col } from "react-bootstrap";
 import styles from "./style/style.module.css";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { SiLeetcode } from "react-icons/si";
+import { SiLeetcode, SiCodechef,SiCodeforces } from "react-icons/si";
 
 const RefereeInfo = (props) => {
   const resume = props.resume;
-  console.log(resume);
+  // console.log(resume);
   return (
     <Row>
       <Col className={styles.carddetails}>
@@ -17,6 +17,10 @@ const RefereeInfo = (props) => {
           Graduation year-
           {props.year}
         </Row>
+        <Row className={styles.rw}>Email- 
+        {props.email}
+        </Row>
+
         <button
           className={styles.button}
           onClick={() => window.open(resume, "_blank")}
@@ -40,6 +44,16 @@ const RefereeInfo = (props) => {
           <Col>
             <a href={props.linkedinlink} target="_blank">
               <FaLinkedin className="icons" />
+            </a>
+          </Col>
+          <Col>
+            <a href={props.codeforcesLink} target="_blank">
+              <SiCodeforces className="icons" />
+            </a>
+          </Col>
+          <Col>
+            <a href={props.codechefLink} target="_blank">
+              <SiCodechef className="icons" />
             </a>
           </Col>
         </Row>

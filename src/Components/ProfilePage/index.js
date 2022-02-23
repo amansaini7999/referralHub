@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Container } from "react-bootstrap";
 import styles from "./style/style.module.css";
 import ImageCard from "./imagecard";
 import RequestStatus from "./requestStatus";
+import {withRouter} from 'react-router-dom'
+import { getUser } from "../../api/user";
 
 const arr = [
   {
@@ -80,14 +82,25 @@ const arr1 = [
   },
 ];
 
-const Profile = ({ isReferee }) => {
+
+
+const Profile = (props) => {
+  // console.log(props)
+  const [userData , setUserData] = useState({});
+  useEffect(() =>{
+    getUser(props.token,props.match.params.userId).then((res)=>{
+      setUserData(res);
+    });
+  },[]);
+  
+  // console.log(userData);
   return (
     <Container>
       <Row className={styles.rw}>
-        <ImageCard isReferee={isReferee} />
+        <ImageCard userData={userData} token={props.token} userId={props.userId} id={props.match.params.userId}/>
       </Row>
 
-      {isReferee ? (
+      {userData.isReferee ? (
         <Row className={styles.rw}>
           <RequestStatus detailsarr={arr} isApplied={true} />
         </Row>
@@ -101,4 +114,4 @@ const Profile = ({ isReferee }) => {
   );
 };
 
-export default Profile;
+export default withRouter(Profile);
