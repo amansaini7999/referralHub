@@ -18,6 +18,7 @@ import OpenJobs from "./Components/OpenJobs";
 import OpenResumes from "./Components/OpenResumes";
 import Submitted from "./Components/Submitted";
 import LoginSignup from "./Components/Signin_and_Signup";
+import JobCard from "./Components/OpenJobs/JobCard";
 
 // const ref=false;
 //install npm install react-icons --save
@@ -75,14 +76,15 @@ const App = () => {
                   <main className='py-3 bg-light contextual'>
                     <Container>
                       <IntroCards referral={false}/>
-                      <OpenJobs/>
+                      <OpenJobs token={token}/>
                     </Container>
                   </main>
                 </>
               )
             }}>
-              </Route>
-              <Route exact path="/referral" render={()=>
+            </Route>
+        
+            <Route exact path="/referral" render={()=>
             {
               return(
                 <>
@@ -100,11 +102,12 @@ const App = () => {
             <Route exact path="/users/:userId">
               <Profile token={token} userId={userId}/>
             </Route>
-            <Route exact path="/referral/createjob">
+            <Route exact path="/createjob">
               <Cards
                       heading="Create JOB"
                       desc="Kindly fill in the details to proceed"
                       cont="CreateJob"
+                      token={token}
                     />
             </Route>
             <Route exact path="/refreq">
@@ -113,8 +116,25 @@ const App = () => {
             <Route exact path="/refreq/submitted">
               <Submitted/>
             </Route>
-            <Route exact path="/referral/createjob/submitted">
-              <Submitted/>
+            <Route exact path="/joblistings/:jobid">
+              <Container>
+                <div style={{maxWidth: "840px", margin: "2px auto"}}><JobCard byjobid={true}/></div>
+              </Container>
+            </Route>
+            <Route exact path="/:q" render={()=>
+            {
+              // console.log("in router");
+              return(
+                <>
+                  <main className='py-3 bg-light contextual'>
+                    <Container>
+                      <IntroCards referral={false}/>
+                      <OpenJobs token={token}/>
+                    </Container>
+                  </main>
+                </>
+              )
+            }}>
             </Route>
 
         </Switch>

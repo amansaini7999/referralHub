@@ -14,7 +14,7 @@ const Cards = (props) => {
     case "CreateJob":
       // eslint-disable-next-line no-lone-blocks
       {
-        container = <JobComp />;
+        container = <JobComp token={props.token} />;
         //Button = <Button label="CREATE" handleClick={func} />;
       }
       break;

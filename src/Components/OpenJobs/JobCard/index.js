@@ -1,35 +1,61 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import Styles from './Styles/style.module.css';
 import ReviewModal from '../../Card1/ReviewModal';
+import { withRouter } from 'react-router-dom/cjs/react-router-dom.min';
+import { getJob, postReferral } from '../../../api/jobListing';
+import { Link } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
-const JobCard = ({obj}) => {
+const JobCard = (props) => {
     // let history = useHistory();
+    let tempObj = {};
+    tempObj.postedBy = {id: "", name: "", infotext: ""};
+    tempObj.jobId = "";
+    tempObj.jobLink= "";
+    tempObj.company="";
+    tempObj.desc="";
+    const [obj,setObj] = useState(tempObj);
+    useEffect(() => {
+        if(props.obj === undefined)
+        {
+            getJob(props.match.params.jobid).then((res) => {
+                setObj(res);
+                // console.log(res.postedBy.name);
+            })
+        }
+        else{
+            setObj(props.obj);
+        }
+    },[props.obj])
+    
+
+    // console.log(obj);
 
     function SubmitFunction()
     {
-      console.log("Request Submitted");
-      window.location.reload(false);
+      postReferral(props.token,obj.id).then(() => {
+          alert("Requested");
+      })
     }    
   return <Card className={Styles.card}>
-            <div className={Styles.headingSection}>
-                <h4 className={Styles.heading}>{obj.JobGiver}</h4>
-                <div>{obj.JobGiverPosition}</div>
-            </div>
+            <a href={`/users/${obj.postedBy.id}`} className={Styles.headingSection}>
+                <h4 className={Styles.heading}>{obj.postedBy.name}</h4>
+            </a>
+            <p className={Styles.infotext}>{obj.postedBy.infotext}</p>
             <div className={Styles.middleSection}>
-                <div>Company - {obj.Company}</div>
-                <div>JOB ID - {obj.JobID}</div>
-                <div>JOB Link - <a target="_blank" style={{textDecoration: "none",backgroundColor:"lightgreen"}} href={obj.JobLink}>Click Here</a></div>
+                <div>Company - {obj.company}</div>
+                <div>JOB ID - {obj.jobId}</div>
+                <div>JOB Link - <a target="_blank" style={{textDecoration: "none",backgroundColor:"lightgreen"}} href={obj.jobLink}>Click Here</a></div>
             </div>
             <div className={Styles.description}>
-                {obj.JobDecs}
+                {obj.desc}
             </div>
             <div className={Styles.buttonSection}>
-            <ReviewModal buttonLabel={"REQUEST"} type={ "referralreq"} heading={"Confirm"} msg={"Kindly check your details"} SubmitFunction={SubmitFunction} company={obj.Company} jobId={obj.JobID} jobLink={obj.JobLink}/>
+            <ReviewModal buttonLabel={"REQUEST"} type={ "referralreq"} heading={"Confirm"} msg={"Kindly check your details"} SubmitFunction={SubmitFunction} company={obj.company} jobId={obj.jobId} jobLink={obj.jobLink}/>
             </div>
         </Card>;
 };
 
-export default JobCard;
+export default withRouter(JobCard);

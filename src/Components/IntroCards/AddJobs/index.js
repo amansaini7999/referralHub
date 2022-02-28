@@ -11,7 +11,7 @@ const AddJobs = () => {
     const navigate = useHistory();
 
     const func = ()=>{
-        let path=`/referral/createjob`;
+        let path=`/createjob`;
         navigate.push(path);
         console.log("button click");
     }
