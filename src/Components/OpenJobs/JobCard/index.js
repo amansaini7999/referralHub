@@ -5,6 +5,7 @@ import ReviewModal from '../../Card1/ReviewModal';
 import { withRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import { getJob, postReferral } from '../../../api/jobListing';
 import { Link } from 'react-router-dom';
+import { getOwnUser } from '../../../api/user';
 // import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 
@@ -16,8 +17,18 @@ const JobCard = (props) => {
     tempObj.jobLink= "";
     tempObj.company="";
     tempObj.desc="";
+    const tempUser={
+        name: "Rahul Jain",
+        email: "xyz@email.com",
+        phone_number: "65413974",
+        resume_link: "bily.com/xyz311"
+    }
     const [obj,setObj] = useState(tempObj);
+    const [user, setUser] = useState(tempUser);
     useEffect(() => {
+        getOwnUser(props.token).then((res) => {
+            setUser(res);
+        }) 
         if(props.obj === undefined)
         {
             getJob(props.match.params.jobid).then((res) => {
@@ -35,8 +46,9 @@ const JobCard = (props) => {
 
     function SubmitFunction()
     {
-      postReferral(props.token,obj.id).then(() => {
-          alert("Requested");
+      postReferral(props.token,obj.id).then((res) => {
+          alert(res.message);
+          console.log(res.message);
       })
     }    
   return <Card className={Styles.card}>
@@ -53,7 +65,7 @@ const JobCard = (props) => {
                 {obj.desc}
             </div>
             <div className={Styles.buttonSection}>
-            <ReviewModal buttonLabel={"REQUEST"} type={ "referralreq"} heading={"Confirm"} msg={"Kindly check your details"} SubmitFunction={SubmitFunction} company={obj.company} jobId={obj.jobId} jobLink={obj.jobLink}/>
+            <ReviewModal user={user} token={props.token} buttonLabel={"REQUEST"} type={ "referralreq"} heading={"Confirm"} msg={"Kindly check your details"} SubmitFunction={SubmitFunction} company={obj.company} jobId={obj.jobId} jobLink={obj.jobLink}/>
             </div>
         </Card>;
 };

@@ -35,5 +35,5 @@ export const postReferral = async (token,jobref) => {
             authorization: 'Bearer ' + token,
         }
     });
-    console.log(res.message);
+    return res.data;
 }

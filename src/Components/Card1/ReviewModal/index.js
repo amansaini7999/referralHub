@@ -1,6 +1,6 @@
 import React from 'react';
 import ReviewCard from '../Review';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { Modal,Button} from 'react-bootstrap';
 import ButtonStyles from '../../cards/EditProfile/styles/FormStyle/style.module.css';
 import styles from './Styles/style.module.css'
@@ -10,6 +10,10 @@ const ReviewModal = (props) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [user, setUser] = useState(props.user);
+    useEffect(()=>{
+        setUser(props.user);
+    },[props.user]);
     const [feedback, setFeedback] =useState("");
     let buttonContainer=null;
     let bodyContainer=null;
@@ -49,7 +53,7 @@ const ReviewModal = (props) => {
           buttonContainer=<button className={ButtonStyles.submitButton} onClick={handleShow}>
           {props.buttonLabel}
           </button>;
-          bodyContainer=<ReviewCard type={"referralreq"}  company={props.company} jobId={props.jobId} jobLink={props.jobLink} desc={props.desc}/>;
+          bodyContainer=<ReviewCard type={"referralreq"}  user={user} company={props.company} jobId={props.jobId} jobLink={props.jobLink} desc={props.desc}/>;
           footerContainer=<><Button variant="secondary" onClick={handleClose}>
           Edit
           </Button>
