@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {useState} from 'react';
 import "./Card1.css"
-import { Card,FormControl,InputGroup,Modal,DropdownButton,CloseButton,Button,Dropdown} from 'react-bootstrap'
+import { Card,FormControl,InputGroup,DropdownButton,CloseButton,Dropdown} from 'react-bootstrap'
 import DropdownStyles from '../cards/job/style/style.module.css';
 import ReviewModal from './ReviewModal';
 import { useHistory } from 'react-router-dom';
+import { getOwnUser } from '../../api/user';
+import { addJob, postReferral } from '../../api/jobListing';
   
 // Card to Request Job Referral
 const companyname = [
@@ -34,25 +36,54 @@ const companyname = [
   },
 ];
 
-function func()
-{
-  console.log("Input Set");
 
-}
 
 // this is for referral req 
-function Card1()
+function Card1(props)
 {
   const [company,setCompany] = useState("");
   const [jobId, setJobId] = useState("");
   const [jobLink, setJobLink] = useState("");
-  let history = useHistory();
+  const tempUser={
+    name: "",
+    email: "",
+    phone_number: "",
+    resume_link: ""
+  }
+
+  const [user, setUser] = useState(tempUser);
+  useEffect(()=>{
+    getOwnUser().then((res) => {
+      if(res)
+      setUser(res);
+    }) 
+  })
 
   function SubmitFunction()
   {
-    console.log("Submitted referral req");
-    let path = "/refreq/submitted";
-    history.push(path);
+    if(company==="")
+    {
+      alert("Company Name is required");
+    }
+    else
+    {
+      if(jobId==="" && jobLink==="")
+      {
+        alert("Job Id/Job Link is required");
+      }
+      else{
+        addJob({self: true,isActive: false, company: company,jobId: jobId, jobLink: jobLink}).then((jobid) =>{
+          postReferral(jobid).then((res) => {
+            if(res)
+            alert(res.message);
+          })
+        });
+
+        // console.log("fine");
+        
+        
+      }
+    }
   }
     
   return (
@@ -96,7 +127,7 @@ function Card1()
           aria-describedby="basic-addon2"/>
                   
           <br/>
-          <ReviewModal buttonLabel={"REQUEST"} type={ "createreferralreq"} heading={"Review"} msg={"Kindly check your details"} isReferReq={true} SubmitFunction={SubmitFunction} company={company} jobId={jobId} jobLink={jobLink}/>
+          <ReviewModal user={user} buttonLabel={"REQUEST"} type={ "createreferralreq"} heading={"Review"} msg={"Kindly check your details"} isReferReq={true} SubmitFunction={SubmitFunction} company={company} jobId={jobId} jobLink={jobLink}/>
         </Card.Body>
       </Card>
   )

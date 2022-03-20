@@ -13,10 +13,10 @@ const RefereeInfo = (props) => {
         <Row className={styles.name}>{props.name}</Row>
 
         <Row className={styles.rw}>{props.infotext}</Row>
-        <Row className={styles.rw}>
+        {props.year?<Row className={styles.rw}>
           Graduation year-
           {props.year}
-        </Row>
+        </Row>:null}
         <Row className={styles.rw}>Email- 
         {props.email}
         </Row>

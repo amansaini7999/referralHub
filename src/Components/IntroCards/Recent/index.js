@@ -56,9 +56,9 @@ const Recent = () => {
     return (
         <Card className={styles.midCard}>
           <p className={`${styles.hdPara} ${styles.midPara}`}>Recently Accepted Requestes</p>
-          {arr.map(obj => <div key={obj.id}>
+          {/* {arr.map(obj => <div key={obj.id}>
               <Info obj={obj}/>
-          </div> )}
+          </div> )} */}
         </Card>
     )
 }

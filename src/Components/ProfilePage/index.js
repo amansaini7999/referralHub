@@ -4,92 +4,36 @@ import styles from "./style/style.module.css";
 import ImageCard from "./imagecard";
 import RequestStatus from "./requestStatus";
 import {withRouter} from 'react-router-dom'
-import { getUser } from "../../api/user";
-
-const arr = [
-  {
-    id: 1,
-    name: "CISCO",
-    jobid: "16890",
-    joblink: "#",
-    status: "referred",
-  },
-  {
-    id: 2,
-    name: "Amazon",
-    jobid: "16C90",
-    joblink: "#",
-    status: "referred",
-  },
-  {
-    id: 3,
-    name: "Swiggy",
-    jobid: "7246G7",
-    joblink: "#",
-    status: "referred",
-  },
-  {
-    id: 4,
-    name: "TCS",
-    jobid: "69890",
-    joblink: "#",
-    status: "referred",
-  },
-  {
-    id: 5,
-    name: "Barclays",
-    jobid: "U791Y7",
-    joblink: "#",
-    status: "referred",
-  },
-];
-
-const arr1 = [
-  {
-    id: 1,
-    name: "Animesh Bora",
-    jobid: "16890",
-    joblink: "#",
-    status: "referred",
-  },
-  {
-    id: 2,
-    name: "Ruby Rajput",
-    jobid: "16C90",
-    joblink: "#",
-    status: "referred",
-  },
-  {
-    id: 3,
-    name: "Shivam Patel",
-    jobid: "7246G7",
-    joblink: "#",
-    status: "referred",
-  },
-  {
-    id: 4,
-    name: "Archi Mehta",
-    jobid: "69890",
-    joblink: "#",
-    status: "referred",
-  },
-  {
-    id: 5,
-    name: "Rukmini Sanyal",
-    jobid: "U791Y7",
-    joblink: "#",
-    status: "referred",
-  },
-];
+import { getUser,getSecUser } from "../../api/user";
+import ReactLoading from 'react-loading'
+import LoadingStyles from '../OpenJobs/Styles/style.module.css'
 
 
 
 const Profile = (props) => {
   // console.log(props)
-  const [userData , setUserData] = useState({});
+  const tempUser = {
+    general: {}
+  }
+  const tempUserSec = {
+    jobPosted: [],
+    referralFeedback: []
+  }
+  const [userData , setUserData] = useState(tempUser);
+  const [userSecData, setUserSecData] =useState(tempUserSec);
+  const [loading,setLoading] = useState(true);
   useEffect(() =>{
-    getUser(props.token,props.match.params.userId).then((res)=>{
+    setLoading(true);
+    getUser(props.match.params.userId).then((res)=>{
+      if(res)
       setUserData(res);
+    });
+    getSecUser(props.match.params.userId).then((res)=>{
+      setLoading(false);
+      if(res){
+        setUserSecData(res);
+        // console.log(res);
+      }
     });
   },[]);
   
@@ -97,19 +41,27 @@ const Profile = (props) => {
   return (
     <Container>
       <Row className={styles.rw}>
-        <ImageCard userData={userData} token={props.token} userId={props.userId} id={props.match.params.userId}/>
+        <ImageCard userData={userData.general} token={props.token} userId={props.userId} id={props.match.params.userId}/>
       </Row>
 
-      {userData.isReferee ? (
+      {loading?
+      <ReactLoading className={LoadingStyles.loadingProfile} type="bars" color="black" height={667} width={375} />
+      :
+      <div>
+      {userSecData.referralFeedback.length > 0 ? (
         <Row className={styles.rw}>
-          <RequestStatus detailsarr={arr} isApplied={true} />
+          <RequestStatus token={props.token} detailsarr={userSecData.referralFeedback} userId={props.userId} id={props.match.params.userId} isApplied={true} />
         </Row>
-      ) : (
+      ) : null
+      }
+
+      {userSecData.jobPosted.length > 0 ? (
         <Row className={styles.rw}>
-          <RequestStatus detailsarr={arr} isApplied={true} />
-          <RequestStatus detailsarr={arr1} isApplied={false} />
+          <RequestStatus cur_comp={userData.general.current_company} token={props.token} detailsarr={userSecData.jobPosted} userId={props.userId} id={props.match.params.userId} isApplied={false} />
         </Row>
-      )}
+      ) : null
+      } 
+      </div>}
     </Container>
   );
 };

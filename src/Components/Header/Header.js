@@ -3,21 +3,21 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import styles from './styles/style.module.css'
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';  
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 
 import logo from "../../Asset/images/logoR.png";
 
 const Header = ({auth, setAuth, userId}) => {
   // console.log("header " + auth);
-  const history = useHistory();
+  // const history = useHistory();
 
   const logOut = async () => {
     await firebase.auth().signOut()
 	
    .then(function() {
-    let path = "/";
-    history.push(path);
+    // let path = "/";
+    // history.push(path);
    }, function(error) {
       console.log('Signout Failed')  
    });
@@ -37,7 +37,7 @@ const Header = ({auth, setAuth, userId}) => {
               <Nav.Link href={`/users/${userId}`}>
                 <i className="fas fa-user"></i>
               </Nav.Link>
-              <Nav.Link href="/urlll">
+              <Nav.Link href={`/users/${userId}`}>
                 <i className="fas fa-bell"></i>
               </Nav.Link>
               <Nav.Link>

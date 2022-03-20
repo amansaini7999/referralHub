@@ -14,22 +14,16 @@ const ReviewModal = (props) => {
     useEffect(()=>{
         setUser(props.user);
     },[props.user]);
-    const [feedback, setFeedback] =useState("");
     let buttonContainer=null;
     let bodyContainer=null;
     let footerContainer=null;
-    function FeedbackSubmitFunction()
-    {
-      console.log(feedback);
-      window.location.reload(false);
-    }
     switch (props.type) {
       case "createreferralreq":
         {
           buttonContainer=<button className={ButtonStyles.submitButton} onClick={handleShow}>
           {props.buttonLabel}
           </button>;
-          bodyContainer=<ReviewCard type={"createreferralreq"} company={props.company} jobId={props.jobId} jobLink={props.jobLink}/>;
+          bodyContainer=<ReviewCard type={"createreferralreq"} user={user} company={props.company} jobId={props.jobId} jobLink={props.jobLink}/>;
           footerContainer=<><Button variant="secondary" onClick={handleClose}>
           Edit
           </Button>
@@ -67,10 +61,11 @@ const ReviewModal = (props) => {
           buttonContainer=<button className={ButtonStyles.submitButtonY} onClick={handleShow}>
           {props.buttonLabel}
           </button>;
-          bodyContainer=<ReviewCard type={"feedback"} feedback={feedback} setFeedback={setFeedback}/>;
+          bodyContainer=<ReviewCard type={"feedback"} feedback={props.feedback} setFeedback={props.setFeedback}/>;
           footerContainer=<>
-          <Button variant="primary" onClick={FeedbackSubmitFunction}>Submit</Button></>;
+          <Button variant="primary" onClick={props.feedbackSubmit}>Submit</Button></>;
         }
+        break;
       default:
         break;
 

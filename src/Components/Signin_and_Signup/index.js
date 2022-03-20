@@ -11,8 +11,6 @@ import { addUser } from '../../api/user/index'
 const LoginSignup = ({setAuth, signin, token , setToken}) => {
     const [stu, setStu] = useState(true);
 
-    const user ={};
-
     const history = useHistory();
 
     const signUpWithGoogle = async() => {
@@ -30,12 +28,23 @@ const LoginSignup = ({setAuth, signin, token , setToken}) => {
                         isReferee: stu
                     }
                     // console.log(user);
-                    userCred.user.getIdToken().then((token) => {
-                        addUser(token, user);
+                    userCred.user.getIdToken().then(() => {
+                        addUser(user).then((res) => {
+                            if(res.isReferee)
+                            {
+                                window.localStorage.setItem('isReferee','true');
+                            }
+                            else
+                            {
+                                window.localStorage.setItem('isReferee','false');
+                            }
+                            const userId = userCred.user.uid;
+                            let path = `users/${userId}`;
+                            history.push(path);
+                        })
+                        
                     })
-                    const userId = userCred.user.uid;
-                    let path = `users/${userId}`;
-                    history.push(path);
+                    
 				}
                 
 			});
@@ -56,11 +65,22 @@ const LoginSignup = ({setAuth, signin, token , setToken}) => {
                         isReferee: stu
                     }
                     // console.log(user);
-                    userCred.user.getIdToken().then((token) => {
-                        addUser(token, user);
+                    userCred.user.getIdToken().then(() => {
+                        addUser(user).then((res) => {
+                            if(res.isReferee)
+                            {
+                                window.localStorage.setItem('isReferee','true');
+                            }
+                            else
+                            {
+                                window.localStorage.setItem('isReferee','false');
+                            }
+                            let path = '/';
+                            history.push(path);
+                        })
+                        
                     })
-                    let path = "/";
-                    history.push(path);
+                    
 				}
 			});
     };

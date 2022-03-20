@@ -6,7 +6,7 @@ import RequestCards from "./RequestsCard";
 const requestedProfiles = (props) => {
   return (
     <Card className={styles.card}>
-      <RequestCards isApplied={props.isApplied} detailsarr={props.detailsarr} />
+      <RequestCards cur_comp={props.cur_comp} token={props.token} userId={props.userId} id={props.id} isApplied={props.isApplied} detailsarr={props.detailsarr} />
     </Card>
   );
 };

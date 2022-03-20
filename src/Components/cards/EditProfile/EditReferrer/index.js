@@ -32,6 +32,8 @@ const EditReferrer = ({ token, data, setData, heading, buttonLabel }) => {
     setShow(false)
   }
 
+  // console.log(updatedData);
+
   return (
     <>
       <IconButton
@@ -52,7 +54,7 @@ const EditReferrer = ({ token, data, setData, heading, buttonLabel }) => {
         </Modal.Header>
         <div className={styles.form}>
           <Row>
-            <Form onSubmit={(e)=>{e.preventDefault(); setData(updatedData); SubmithandleClose(); editUser(token, updatedData)}}>
+            <Form onSubmit={(e)=>{e.preventDefault(); setData(updatedData); SubmithandleClose(); editUser(updatedData)}}>
               <Modal.Body>
                 <div className={styles.formArea}>
                   <Form.Group className="mb-3 mt-3" controlId="name">

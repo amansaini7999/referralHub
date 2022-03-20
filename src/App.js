@@ -16,7 +16,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import OpenJobs from "./Components/OpenJobs";
 import OpenResumes from "./Components/OpenResumes";
-import Submitted from "./Components/Submitted";
+// import Submitted from "./Components/Submitted";
 import LoginSignup from "./Components/Signin_and_Signup";
 import JobCard from "./Components/OpenJobs/JobCard";
 
@@ -31,6 +31,7 @@ const App = () => {
 		firebase.auth().onAuthStateChanged((userCred) => {
 			if (userCred) {
 				setAuth(true);
+        // console.log("it is here");
 				window.localStorage.setItem('auth', 'true');
 				userCred.getIdToken().then((token) => {
 					setToken(token);
@@ -47,6 +48,7 @@ const App = () => {
         window.localStorage.setItem('auth', 'false');
         window.localStorage.setItem('token',null);
         window.localStorage.setItem('userId',null);
+        window.localStorage.setItem('isReferee',null);
       }
 		});
 	}, []);
@@ -89,10 +91,25 @@ const App = () => {
               return(
                 <>
                   <main className='py-3 bg-light contextual'>
-                    <Container>
+                    {window.localStorage.getItem('isReferee')==="false"?<Container>
                       <IntroCards referral={true}/>
-                      <OpenResumes/>
-                    </Container>
+                      <OpenResumes token={token}/>
+                    </Container>:null}
+                  </main>
+                </>
+              )
+            }}>
+            </Route>
+
+            <Route exact path="/referral/:q" render={()=>
+            {
+              return(
+                <>
+                  <main className='py-3 bg-light contextual'>
+                  {window.localStorage.getItem('isReferee')==="false"?<Container>
+                      <IntroCards referral={true}/>
+                      <OpenResumes token={token}/>
+                    </Container>:null}
                   </main>
                 </>
               )
@@ -103,22 +120,19 @@ const App = () => {
               <Profile token={token} userId={userId}/>
             </Route>
             <Route exact path="/createjob">
-              <Cards
+              {window.localStorage.getItem('isReferee')==="false"?<Cards
                       heading="Create JOB"
                       desc="Kindly fill in the details to proceed"
                       cont="CreateJob"
                       token={token}
-                    />
+                    />:null}
             </Route>
             <Route exact path="/refreq">
-              <Card1/>
-            </Route>
-            <Route exact path="/refreq/submitted">
-              <Submitted/>
+              <Card1 token={token}/>
             </Route>
             <Route exact path="/joblistings/:jobid">
               <Container>
-                <div style={{maxWidth: "840px", margin: "2px auto"}}><JobCard byjobid={true}/></div>
+                <div style={{maxWidth: "840px", margin: "2px auto"}}><JobCard token={token} byjobid={true}/></div>
               </Container>
             </Route>
             <Route exact path="/:q" render={()=>

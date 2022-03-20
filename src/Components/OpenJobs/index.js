@@ -19,15 +19,26 @@ const OpenJobs = (props) => {
     // console.log(lastIdUrl);
     const emptyContent = {data: [],hasNext: 0, lastId:""};
     const [content,setContent] = useState(emptyContent);
+    const [loading,setLoading] = useState(true);
+    
+
     useEffect(() => {
         setContent(emptyContent);
+        setLoading(true);
         // console.log("done");
         getJobList(lastIdUrl).then((res) => {
-            setContent(res);
-            console.log(res);
+            if(!res)
+            {
+                setContent(emptyContent);
+            }
+            else{
+                setContent(res);
+            }
+            setLoading(false);
+            // console.log(res);
 
         })
-    },[lastIdUrl])
+    },[search])
 
     const fun = () => {
         history.push(`/q?lastjobid=${content.lastId}`);
@@ -35,7 +46,7 @@ const OpenJobs = (props) => {
         window.scrollTo(0, 0);
         setContent(emptyContent);
     }
-  return <div className={styles.mainCard}>{content.data.length?content.data.map(obj=><JobCard token={props.token} key={obj.id} obj={obj}/>):<ReactLoading className={styles.loading} type="bars" color="black" height={667} width={375} />}
+  return <div className={styles.mainCard}>{!loading?content.data.length>0?content.data.map(obj=><JobCard token={props.token} key={obj.id} obj={obj}/>):<div style={{textAlign: "center"}}>No data</div>:<ReactLoading className={styles.loading} type="bars" color="black" height={667} width={375} />}
                 <div style={{textAlign: "center"}}>
                     {content.hasNext?<button className={ButtonStyle.submitButton} onClick={fun}>
                         See more

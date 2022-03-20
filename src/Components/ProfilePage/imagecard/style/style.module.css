@@ -14,7 +14,7 @@
   min-height: 230px !important;
 }
 .im {
-  background-image: url("/src/Asset/images/refree.jpg") !important;
+  /* background-image: url("/src/Asset/images/refree.jpg") !important; */
   background-size: cover;
   height: 230px;
   width: 220px;
@@ -30,4 +30,9 @@
 
 .buffer{
   min-height: 60px;
+}
+
+.profile{
+  border-radius: 67px;
+  padding: 0px !important;
 }

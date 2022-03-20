@@ -1,5 +1,4 @@
 import React from "react";
-import { Row, Card } from "react-bootstrap";
 import styles from "./style/style.module.css";
 import JobComp from "./job";
 

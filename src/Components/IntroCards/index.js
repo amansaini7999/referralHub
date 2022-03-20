@@ -10,12 +10,13 @@ import Refreq from './refreq';
 
 
 const Intro = ({referral}) => {
+    const isReferee = window.localStorage.getItem('isReferee');
     return (
     <Container>
     <Row>
         <Col>
         <Row className={styles.rw}><ReferralStats/></Row>
-        <Row className={styles.rw}><OpenJobs/></Row>
+        {isReferee==='false'?<Row className={styles.rw}><OpenJobs/></Row>:null}
         </Col>
         <Col xs={8}>
         <Row className={styles.rw}><IntroCard/></Row>

@@ -10,13 +10,13 @@ const OpenJobs = () => {
     const func1 = ()=>{
     let path=`/`;
     navigate.push(path);
-    console.log("button click");
+    // console.log("button click");
     }
 
     const func2 = ()=>{
         let path=`/referral`;
         navigate.push(path);
-        console.log("button click");
+        // console.log("button click");
         }
     return (
         <Card className={styles.card}>

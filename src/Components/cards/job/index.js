@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
-  Row,
   Form,
   InputGroup,
   FormControl,
@@ -63,7 +62,7 @@ const CreateJob = (props) => {
         alert("Job Id/Job Link is required");
       }
       else{
-        addJob(props.token,{company: company,jobId: jobId, desc: jobDesc, jobLink: jobLink}).then((jobid) =>{
+        addJob({isActive: true, company: company,jobId: jobId, desc: jobDesc, jobLink: jobLink}).then((jobid) =>{
           let path = `/joblistings/${jobid}`;
           history.push(path);
         });
@@ -109,7 +108,7 @@ const CreateJob = (props) => {
         <textarea className={styles.txtArea} placeholder="Description"  onChange={(e)=>{setJobDesc(e.target.value)}} value={jobDesc} cols="30" rows="4"></textarea>
       </div>
       <div style={{textAlign: "center" , marginTop: "5px"}}>
-        <ReviewModal buttonLabel={"REQUEST"} type={"createjob"} heading={"Review"} msg={"Kindly check your details"} isReferReq={false} SubmitFunction={SubmitFunction} company={company} jobId={jobId} jobLink={jobLink} desc={jobDesc}/>
+        <ReviewModal buttonLabel={"Submit"} type={"createjob"} heading={"Review"} msg={"Kindly check your details"} isReferReq={false} SubmitFunction={SubmitFunction} company={company} jobId={jobId} jobLink={jobLink} desc={jobDesc}/>
       </div>
     </div>
   );
