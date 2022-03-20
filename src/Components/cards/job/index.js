@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
-  Row,
   Form,
   InputGroup,
   FormControl,
@@ -11,6 +10,7 @@ import {
 import styles from "./style/style.module.css";
 import DropdownStyles from '../../cards/job/style/style.module.css';
 import ReviewModal from '../../Card1/ReviewModal';
+import { addJob } from '../../../api/jobListing';
 
 const companyname = [
   {
@@ -51,9 +51,24 @@ const CreateJob = (props) => {
 
   function SubmitFunction()
   {
-    console.log("Submitted new job");
-    let path = "/referral/createjob/submitted";
-    history.push(path);
+    if(company==="")
+    {
+      alert("Company Name is required");
+    }
+    else
+    {
+      if(jobId==="" && jobLink==="")
+      {
+        alert("Job Id/Job Link is required");
+      }
+      else{
+        addJob({isActive: true, company: company,jobId: jobId, desc: jobDesc, jobLink: jobLink}).then((jobid) =>{
+          let path = `/joblistings/${jobid}`;
+          history.push(path);
+        });
+        
+      }
+    }
   }
   return (
     <div>
@@ -62,7 +77,9 @@ const CreateJob = (props) => {
         <FormControl onChange={(e)=>{setCompany(e.target.value)}} value={company}
             placeholder="Company Name"
             aria-label="company-name"
-            aria-describedby="basic-addon2"/>
+            aria-describedby="basic-addon2"
+            required
+            />
             <DropdownButton className="dropDownBtn"> 
               {companyname.map((obj) => (
                 <div key={obj.id}>
@@ -91,7 +108,7 @@ const CreateJob = (props) => {
         <textarea className={styles.txtArea} placeholder="Description"  onChange={(e)=>{setJobDesc(e.target.value)}} value={jobDesc} cols="30" rows="4"></textarea>
       </div>
       <div style={{textAlign: "center" , marginTop: "5px"}}>
-        <ReviewModal buttonLabel={"REQUEST"} type={"createjob"} heading={"Review"} msg={"Kindly check your details"} isReferReq={false} SubmitFunction={SubmitFunction} company={company} jobId={jobId} jobLink={jobLink} desc={jobDesc}/>
+        <ReviewModal buttonLabel={"Submit"} type={"createjob"} heading={"Review"} msg={"Kindly check your details"} isReferReq={false} SubmitFunction={SubmitFunction} company={company} jobId={jobId} jobLink={jobLink} desc={jobDesc}/>
       </div>
     </div>
   );

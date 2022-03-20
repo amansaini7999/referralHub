@@ -2,3 +2,15 @@
     max-width: 840px !important;
     margin: 2px auto ;
 }
+
+.loading{
+    width: 10% !important;
+    margin: 0px auto !important;
+    height: 100px !important;
+}
+
+.loadingProfile{
+    width: 8% !important;
+    margin: 0px auto !important;
+    height: 100px !important;
+}

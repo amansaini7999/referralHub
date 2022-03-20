@@ -1,7 +1,6 @@
 import React from 'react'
 import { Card,Row } from 'react-bootstrap'
 import styles from './styles/style.module.css'
-import Button from '../AppButton'
 import { useHistory } from 'react-router-dom'
 import ButtonStyles from '../../cards/EditProfile/styles/FormStyle/style.module.css'
 
@@ -13,7 +12,7 @@ const Refreq = () => {
     const func = ()=>{
     let path=`/refreq`;
     navigate.push(path);
-    console.log("button click");
+    // console.log("button click");
     }
     return (
         <Card className={styles.card}>

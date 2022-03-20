@@ -1,17 +1,38 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import styles from "../styles/FormStyle/style.module.css";
 import { Form, Row, Modal } from "react-bootstrap";
 import editIcon from "../../../../Asset/images/edit-icon.png";
 import IconButton from "../../../IconButton";
-import useRefereeData from "./logic";
+import { editUser } from "../../../../api/user";
 
-const EditReferee = ({ heading, buttonLabel }) => {
-  const { referee_data, handle, submit } = useRefereeData();
+const EditReferee = ({ token, data, setData, heading, buttonLabel }) => {
+
+  // console.log("editReferee");
+  // data.isReferee = true;
+  // console.log(data);
+
+  const [updatedData, setUpdatedData] = useState(data);
+  useEffect(()=>{
+    setUpdatedData(data);
+  },[data]);
+
 
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {setShow(false);setUpdatedData(data);}
   const handleShow = () => setShow(true);
 
+  
+
+  const handle = (e) => {
+    const CurupdatedData = { ...updatedData };
+    CurupdatedData[e.target.id] = e.target.value;
+    setUpdatedData(CurupdatedData);
+    // console.log(CurupdatedData);
+  }
+
+  const SubmithandleClose = ()=>{
+    setShow(false)
+  }
   return (
     <>
       <IconButton
@@ -32,13 +53,13 @@ const EditReferee = ({ heading, buttonLabel }) => {
         </Modal.Header>
         <div className={styles.form}>
           <Row>
-            <Form onSubmit={(e) => submit(e)}>
+            <Form onSubmit={(e)=>{e.preventDefault(); setData(updatedData); SubmithandleClose(); editUser(updatedData)}}>
               <Modal.Body>
                 <div className={styles.formArea}>
-                  <Form.Group className="mb-3 mt-3" controlId="full_name">
+                  <Form.Group className="mb-3 mt-3" controlId="name">
                     <Form.Control
                       type="text"
-                      value={referee_data.full_name}
+                      value={updatedData.name}
                       placeholder="Full Name"
                       onChange={(e) => handle(e)}
                       required
@@ -46,10 +67,20 @@ const EditReferee = ({ heading, buttonLabel }) => {
                     />
                   </Form.Group>
 
+                  <Form.Group className="mb-3 mt-3" controlId="infotext">
+                    <Form.Control
+                      type="text"
+                      value={updatedData.infotext}
+                      placeholder="Info"
+                      onChange={(e) => handle(e)}
+                      autoFocus
+                    />
+                  </Form.Group>
+
                   <Form.Group className="mb-3" controlId="institute">
                     <Form.Control
                       type="text"
-                      value={referee_data.institute}
+                      value={updatedData.institute}
                       onChange={(e) => handle(e)}
                       placeholder="Institute"
                       required
@@ -59,7 +90,7 @@ const EditReferee = ({ heading, buttonLabel }) => {
                   <Form.Group className="mb-3" controlId="branch">
                     <Form.Control
                       type="text"
-                      value={referee_data.branch}
+                      value={updatedData.branch}
                       onChange={(e) => handle(e)}
                       placeholder="Branch"
                       required
@@ -69,7 +100,7 @@ const EditReferee = ({ heading, buttonLabel }) => {
                   <Form.Group className="mb-3" controlId="cgpa">
                     <Form.Control
                       type="number"
-                      value={referee_data.cgpa}
+                      value={updatedData.cgpa}
                       placeholder="CGPA(optional)"
                       step="0.01"
                       min="0"
@@ -81,7 +112,7 @@ const EditReferee = ({ heading, buttonLabel }) => {
                   <Form.Group className="mb-3" controlId="linkedin">
                     <Form.Control
                       type="url"
-                      value={referee_data.linkedin}
+                      value={updatedData.linkedin}
                       onChange={(e) => handle(e)}
                       placeholder="Linkedin"
                       required
@@ -91,7 +122,7 @@ const EditReferee = ({ heading, buttonLabel }) => {
                   <Form.Group className="mb-3" controlId="codechef">
                     <Form.Control
                       type="url"
-                      value={referee_data.codechef}
+                      value={updatedData.codechef}
                       placeholder="Codechef(optional)"
                       onChange={(e) => handle(e)}
                     />
@@ -100,7 +131,7 @@ const EditReferee = ({ heading, buttonLabel }) => {
                   <Form.Group className="mb-3" controlId="codeforces">
                     <Form.Control
                       type="url"
-                      value={referee_data.codeforces}
+                      value={updatedData.codeforces}
                       placeholder="Codeforces(optional)"
                       onChange={(e) => handle(e)}
                     />
@@ -109,8 +140,17 @@ const EditReferee = ({ heading, buttonLabel }) => {
                   <Form.Group className="mb-3" controlId="leetcode">
                     <Form.Control
                       type="url"
-                      value={referee_data.leetcode}
+                      value={updatedData.leetcode}
                       placeholder="Leetcode(optional)"
+                      onChange={(e) => handle(e)}
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3" controlId="github">
+                    <Form.Control
+                      type="url"
+                      value={updatedData.github}
+                      placeholder="github(optional)"
                       onChange={(e) => handle(e)}
                     />
                   </Form.Group>
@@ -118,7 +158,7 @@ const EditReferee = ({ heading, buttonLabel }) => {
                   <Form.Group className="mb-3" controlId="resume_link">
                     <Form.Control
                       type="url"
-                      value={referee_data.resume_link}
+                      value={updatedData.resume_link}
                       placeholder="Resume(GDRIVE LINK)"
                       onChange={(e) => handle(e)}
                       required
@@ -128,7 +168,7 @@ const EditReferee = ({ heading, buttonLabel }) => {
                   <Form.Group className="mb-3" controlId="graduating_year">
                     <Form.Control
                       type="number"
-                      value={referee_data.graduating_year}
+                      value={updatedData.graduating_year}
                       placeholder="Graduating Year"
                       onChange={(e) => handle(e)}
                       required
@@ -138,7 +178,7 @@ const EditReferee = ({ heading, buttonLabel }) => {
                   <Form.Group className="mb-3" controlId="phone_number">
                     <Form.Control
                       type="tel"
-                      value={referee_data.phone_number}
+                      value={updatedData.phone_number}
                       placeholder="Mobile Number"
                       onChange={(e) => handle(e)}
                       minLength="10"

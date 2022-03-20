@@ -1,5 +1,4 @@
 import React from "react";
-import { Row, Card } from "react-bootstrap";
 import styles from "./style/style.module.css";
 import JobComp from "./job";
 
@@ -14,7 +13,7 @@ const Cards = (props) => {
     case "CreateJob":
       // eslint-disable-next-line no-lone-blocks
       {
-        container = <JobComp />;
+        container = <JobComp token={props.token} />;
         //Button = <Button label="CREATE" handleClick={func} />;
       }
       break;

@@ -1,52 +1,58 @@
 import React from 'react';
 import JobCard from './JobCard';
 import styles from './Styles/style.module.css';
+import {useState,useEffect} from 'react'
 import ButtonStyle from '.././cards/EditProfile/styles/FormStyle/style.module.css';
+import { getJobList } from '../../api/jobListing';
+import { withRouter,useHistory } from 'react-router-dom';
+
+import ReactLoading from 'react-loading';
 
 
-const arr=[
-    {
-        JobGiver: "Ramesh Agarwal",
-        JobGiverPosition:"SDE Paytm",
-        Company:"Uber",
-        JobID:"1423554",
-        JobLink: "www.Uber.com",
-        JobDecs: "This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description",
-        Id : '1'
-    },
-    {
-        JobGiver: "Ramesh Agarwal",
-        JobGiverPosition:"SDE Paytm",
-        Company:"Uber",
-        JobID:"1423554",
-        JobLink: "www.Uber.com",
-        JobDecs: "This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description",
-        Id : '2'
-    },
-    {
-        JobGiver: "Ramesh Agarwal",
-        JobGiverPosition:"SDE Paytm",
-        Company:"Uber",
-        JobID:"1423554",
-        JobLink: "https://auth.uber.com/login/?breeze_local_zone=phx5&next_url=https%3A%2F%2Fm.uber.com%2F&state=N-XNakwRlac40kvxxzBBA8oD3AY75gePiH4oDtC50OY%3D",
-        JobDecs: "This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description This is Job description",
-        Id : '3'
+
+
+
+const OpenJobs = (props) => {
+    const search = props.location.search;
+    const lastIdUrl = new URLSearchParams(search).get('lastjobid');
+    let history = useHistory();
+    // console.log(lastIdUrl);
+    const emptyContent = {data: [],hasNext: 0, lastId:""};
+    const [content,setContent] = useState(emptyContent);
+    const [loading,setLoading] = useState(true);
+    
+
+    useEffect(() => {
+        setContent(emptyContent);
+        setLoading(true);
+        // console.log("done");
+        getJobList(lastIdUrl).then((res) => {
+            if(!res)
+            {
+                setContent(emptyContent);
+            }
+            else{
+                setContent(res);
+            }
+            setLoading(false);
+            // console.log(res);
+
+        })
+    },[search])
+
+    const fun = () => {
+        history.push(`/q?lastjobid=${content.lastId}`);
+        // console.log("pushed");
+        window.scrollTo(0, 0);
+        setContent(emptyContent);
     }
-];
-
-function fun()
-{
-    console.log("button clicked");
-}
-
-const OpenJobs = () => {
-  return <div className={styles.mainCard}>{arr.map(obj=><JobCard key={obj.Id} obj={obj}/>)}
+  return <div className={styles.mainCard}>{!loading?content.data.length>0?content.data.map(obj=><JobCard token={props.token} key={obj.id} obj={obj}/>):<div style={{textAlign: "center"}}>No data</div>:<ReactLoading className={styles.loading} type="bars" color="black" height={667} width={375} />}
                 <div style={{textAlign: "center"}}>
-                    <button className={ButtonStyle.submitButton} onClick={fun}>
+                    {content.hasNext?<button className={ButtonStyle.submitButton} onClick={fun}>
                         See more
-                    </button>
+                    </button>:null}
                 </div>
         </div>;
 };
 
-export default OpenJobs;
+export default withRouter(OpenJobs);

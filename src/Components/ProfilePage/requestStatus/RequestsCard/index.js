@@ -3,16 +3,22 @@ import { Row, Col } from "react-bootstrap";
 import styles from "./style/style.module.css";
 import Rows from "./row";
 
-const Info = ({ isApplied, detailsarr }) => {
+const Info = ({ cur_comp,token, isApplied, detailsarr,userId,id }) => {
   let title;
   let firstcol;
+  let thirdcol;
+  let forthcol;
 
   if (isApplied) {
     title = "APPLIED REQUESTS";
     firstcol = "COMPANY";
+    thirdcol = "GIVEN BY";
+    forthcol = "STATUS";
   } else {
-    title = "REFERRAL REQUESTS";
-    firstcol = "NAME";
+    title = "JOB POSTED";
+    firstcol = "COMPANY";
+    thirdcol = "REFERRAL REQUESTS";
+    forthcol = "ACTIVE"
   }
 
   return (
@@ -21,14 +27,14 @@ const Info = ({ isApplied, detailsarr }) => {
       <Row className={styles.headings}>
         <Col>{firstcol}</Col>
         <Col>JOB ID</Col>
-        <Col>JOB LINK</Col>
-        <Col>STATUS</Col>
+        <Col>{thirdcol}</Col>
+        <Col>{forthcol}</Col>
       </Row>
       <hr className={styles.hr}></hr>
       <div>
         {detailsarr.map((obj) => (
           <div key={obj.id}>
-            <Rows obj={obj} />
+            <Rows cur_comp={cur_comp} token={token} obj={obj} userId ={userId} id={id} isApplied={isApplied}/>
             <hr className={styles.hr}></hr>
           </div>
         ))}

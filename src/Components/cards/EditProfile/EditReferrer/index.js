@@ -1,16 +1,38 @@
-import { React, useState } from "react";
+import { React, useState,useEffect } from "react";
 import styles from "../styles/FormStyle/style.module.css";
 import { Form, Row, Modal } from "react-bootstrap";
 import editIcon from "../../../../Asset/images/edit-icon.png";
 import IconButton from "../../../IconButton";
-import useReferrerData from "./logic";
+import { editUser } from "../../../../api/user";
 
-const EditReferrer = ({ heading, buttonLabel }) => {
-  const { referrer_data, handle, submit } = useReferrerData();
+const EditReferrer = ({ token, data, setData, heading, buttonLabel }) => {
+  // const { referrer_data, handle, submit } = useReferrerData();
+  // data.isReferee=false;
+  const [updatedData, setUpdatedData] = useState(data);
+
+  // console.log(updatedData);
+  useEffect(()=>{
+    setUpdatedData(data);
+  },[data]);
+
+
 
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {setShow(false);setUpdatedData(data);}
   const handleShow = () => setShow(true);
+
+  const handle = (e) => {
+    const CurupdatedData = { ...updatedData };
+    CurupdatedData[e.target.id] = e.target.value;
+    setUpdatedData(CurupdatedData);
+    // console.log(CurupdatedData);
+  }
+
+  const SubmithandleClose = ()=>{
+    setShow(false)
+  }
+
+  // console.log(updatedData);
 
   return (
     <>
@@ -32,14 +54,25 @@ const EditReferrer = ({ heading, buttonLabel }) => {
         </Modal.Header>
         <div className={styles.form}>
           <Row>
-            <Form onSubmit={(e) => submit(e)}>
+            <Form onSubmit={(e)=>{e.preventDefault(); setData(updatedData); SubmithandleClose(); editUser(updatedData)}}>
               <Modal.Body>
                 <div className={styles.formArea}>
-                  <Form.Group className="mb-3 mt-3" controlId="full_name">
+                  <Form.Group className="mb-3 mt-3" controlId="name">
                     <Form.Control
                       type="text"
                       placeholder="Full Name"
-                      value={referrer_data.full_name}
+                      value={updatedData.name}
+                      required
+                      onChange={(e) => handle(e)}
+                      autoFocus
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3 mt-3" controlId="infotext">
+                    <Form.Control
+                      type="text"
+                      placeholder="Info"
+                      value={updatedData.infotext}
                       required
                       onChange={(e) => handle(e)}
                       autoFocus
@@ -49,7 +82,7 @@ const EditReferrer = ({ heading, buttonLabel }) => {
                   <Form.Group className="mb-3" controlId="current_company">
                     <Form.Control
                       type="text"
-                      value={referrer_data.current_company}
+                      value={updatedData.current_company}
                       placeholder="Current Company"
                       onChange={(e) => handle(e)}
                       required
@@ -59,7 +92,7 @@ const EditReferrer = ({ heading, buttonLabel }) => {
                   <Form.Group className="mb-3" controlId="work_experience">
                     <Form.Control
                       type="number"
-                      value={referrer_data.work_experience}
+                      value={updatedData.work_experience}
                       placeholder="Work Experience"
                       min="0"
                       onChange={(e) => handle(e)}
@@ -67,12 +100,12 @@ const EditReferrer = ({ heading, buttonLabel }) => {
                     />
                   </Form.Group>
 
-                  <Form.Group className="mb-3" controlId="email">
+                  <Form.Group className="mb-3" controlId="github">
                     <Form.Control
-                      type="email"
-                      value={referrer_data.email}
+                      type="url"
+                      value={updatedData.github}
                       onChange={(e) => handle(e)}
-                      placeholder="Email"
+                      placeholder="Github"
                       required
                     />
                   </Form.Group>
@@ -80,7 +113,7 @@ const EditReferrer = ({ heading, buttonLabel }) => {
                   <Form.Group className="mb-3" controlId="linkedin">
                     <Form.Control
                       type="url"
-                      value={referrer_data.linkedin}
+                      value={updatedData.linkedin}
                       onChange={(e) => handle(e)}
                       placeholder="Linkedin"
                       required
@@ -90,7 +123,7 @@ const EditReferrer = ({ heading, buttonLabel }) => {
                   <Form.Group className="mb-3" controlId="phone_number">
                     <Form.Control
                       type="tel"
-                      value={referrer_data.phone_number}
+                      value={updatedData.phone_number}
                       onChange={(e) => handle(e)}
                       placeholder="Phone Number"
                       minLength="10"
@@ -101,7 +134,7 @@ const EditReferrer = ({ heading, buttonLabel }) => {
                   <Form.Group className="mb-3" controlId="job_role">
                     <Form.Control
                       type="text"
-                      value={referrer_data.job_role}
+                      value={updatedData.job_role}
                       onChange={(e) => handle(e)}
                       placeholder="Job Role"
                       required
@@ -111,7 +144,7 @@ const EditReferrer = ({ heading, buttonLabel }) => {
                   <Form.Group className="mb-3" controlId="leetcode">
                     <Form.Control
                       type="url"
-                      value={referrer_data.leetcode}
+                      value={updatedData.leetcode}
                       onChange={(e) => handle(e)}
                       placeholder="Leetcode(optional)"
                     />

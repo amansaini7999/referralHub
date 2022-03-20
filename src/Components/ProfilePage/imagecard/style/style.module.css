@@ -8,12 +8,13 @@
   border-top-left-radius: 10px !important;
   border-top-right-radius: 10px !important;
   height: 410px !important;
+  margin-bottom: 25px !important;
 }
 .details {
   min-height: 230px !important;
 }
 .im {
-  background-image: url("/src/Asset/images/refree.jpg") !important;
+  /* background-image: url("/src/Asset/images/refree.jpg") !important; */
   background-size: cover;
   height: 230px;
   width: 220px;
@@ -25,4 +26,13 @@
   border-width: 7px;
   border-style: solid;
   box-shadow: 1px 3px 9px grey;
+}
+
+.buffer{
+  min-height: 60px;
+}
+
+.profile{
+  border-radius: 67px;
+  padding: 0px !important;
 }
