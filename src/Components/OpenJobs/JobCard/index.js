@@ -64,7 +64,7 @@ const JobCard = (props) => {
             <div className={Styles.middleSection}>
                 <div>Company - {obj.company}</div>
                 {obj.jobId?<div>JOB ID - {obj.jobId}</div>:null}
-                {obj.jobLink?<div>JOB Link - <a target="_blank" style={{textDecoration: "none",backgroundColor:"lightgreen"}} href={obj.jobLink}>Click Here</a></div>:null}
+                {obj.jobLink?<div>JOB Link - <a rel="noreferrer" target="_blank" style={{textDecoration: "none",backgroundColor:"lightgreen"}} href={obj.jobLink}>Click Here</a></div>:null}
             </div>
             <div className={Styles.description}>
                 {obj.desc}

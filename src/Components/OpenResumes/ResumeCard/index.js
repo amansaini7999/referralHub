@@ -48,15 +48,15 @@ const ResumeCard = ({token, obj}) => {
         <div className={styles.cardSection}>
             <div>Company - {obj.company}</div>
             {obj.jobId?<div>JOB ID - {obj.jobId}</div>:null}
-            {obj.jobLink?<div>JOB Link - <a target="_blank" style={{textDecoration: "none",backgroundColor:"lightgreen"}} href={obj.jobLink}>Click Here</a></div>:null}
+            {obj.jobLink?<div>JOB Link - <a rel="noreferrer" target="_blank" style={{textDecoration: "none",backgroundColor:"lightgreen"}} href={obj.jobLink}>Click Here</a></div>:null}
         </div>
        <div className={styles.cardSection}>
-           <div>Name - <a style={{color: "black"}} target="_blank" href={`/users/${obj.canId}`}>{obj.canName}</a> </div> 
+           <div>Name - <a rel="noreferrer" style={{color: "black"}} target="_blank" href={`/users/${obj.canId}`}>{obj.canName}</a> </div> 
            <div>Email - {obj.canEmail}</div> 
            <div>Phone - {obj.canPhone}</div> 
        </div>
        <div className={styles.cardSection}>
-           <div>Resume - <a href={obj.canResume} target="_blank" style={{textDecoration: "none",backgroundColor:"lightgreen"}}>Click here</a></div>
+           <div>Resume - <a rel="noreferrer" href={obj.canResume} target="_blank" style={{textDecoration: "none",backgroundColor:"lightgreen"}}>Click here</a></div>
        </div>
       <div className="d-flex flex-row justify-content-between">
             <button className={ButtonStyle.submitButtonR} onClick={rejectFun}>

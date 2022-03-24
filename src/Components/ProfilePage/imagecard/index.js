@@ -21,7 +21,7 @@ const ProfileCard = ({ userData, token, id,userId }) => {
   return (
     <Card className={styles.card}>
       <Row className={styles.backg}></Row>
-      <Row className={styles.im}>{userData.profile_pic?<img className= {styles.profile} src={userData.profile_pic} alt="pic" />:null}</Row>
+      <Row className={styles.im}>{userData.profile_pic?<img className= {styles.profile} referrerpolicy="no-referrer" src={userData.profile_pic} alt="pic" />:null}</Row>
       {id===userId?<EditProfile token={token} data ={data} setData={setData} type={isReferee?"referee":"referrer"}/>:<div className={styles.buffer}></div>}
       <Row className={styles.details}>
         {isReferee ? (
