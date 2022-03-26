@@ -23,7 +23,7 @@ const Rows = ({ cur_comp,token, obj , isApplied,userId,id}) => {
   return (
     isApplied?
     <Row className={styles.rw}>
-      <Col><a target={"_blank"} style={{color: "black"}} href={`/joblistings/${obj.id}`}>{obj.company}</a></Col>
+      <Col><a target={"_blank"} rel="noreferrer" style={{color: "black"}} href={`/joblistings/${obj.id}`}>{obj.company}</a></Col>
       <Col>{obj.jobId}</Col>
       <Col><a style={{color: "black"}} href={`/users/${obj.givenById}`}>{obj.givenBy}</a></Col>
       {obj.type === 'feedback'?<Col><button style={{paddingLeft: "0px",border: "none",backgroundColor: "white",color: "#e7e722"}} onClick={()=> {if(id===userId)alert(obj.msg)}}>Feedback</button></Col>:null}
@@ -32,10 +32,10 @@ const Rows = ({ cur_comp,token, obj , isApplied,userId,id}) => {
     </Row>
     :
     <Row className={styles.rw}>
-      <Col><a target={"_blank"} style={{color: "black"}} href={`/joblistings/${obj.id}`}>{obj.company}</a></Col>
+      <Col><a target={"_blank"} rel="noreferrer" style={{color: "black"}} href={`/joblistings/${obj.id}`}>{obj.company}</a></Col>
       <Col>{obj.jobId}</Col>
       {obj.company.toLowerCase()===cur_comp.toLowerCase() && userId===id?<Col><a style={{color: "black"}} href={`/referral/?jobId=${obj.id}`}>Show Referral Requests</a></Col>:<Col>You can not Refer for this job</Col>}
-      <Col><Button onClick={closeJob} disabled={(userId != id) || (!isActive)}>Close Job</Button></Col>
+      <Col><Button onClick={closeJob} disabled={(userId !== id) || (!isActive)}>Close Job</Button></Col>
     </Row>
   );
 };

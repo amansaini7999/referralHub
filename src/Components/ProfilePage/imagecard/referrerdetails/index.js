@@ -17,17 +17,17 @@ const RefereerInfo = (props) => {
         <Row className={styles.rwc}>{props.current_company}</Row>
         <Row className={styles.rwc}>
           <Col>
-            <a href={props.leetcodelink} target="_blank">
+            <a rel="noreferrer" href={props.leetcodelink} target="_blank">
               <SiLeetcode className="icons" />
             </a>
           </Col>
           <Col>
-            <a href={props.linkedinlink} target="_blank">
+            <a rel="noreferrer" href={props.linkedinlink} target="_blank">
               <FaLinkedin className="icons" />
             </a>
           </Col>
           <Col>
-            <a href={props.githublink} target="_blank">
+            <a rel="noreferrer" href={props.githublink} target="_blank">
               <FaGithub className="icons" />
             </a>
           </Col>

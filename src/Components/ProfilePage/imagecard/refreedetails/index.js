@@ -32,27 +32,27 @@ const RefereeInfo = (props) => {
         <Row className={styles.rwc}>{props.college}</Row>
         <Row className={styles.rwc}>
           <Col className={styles.cl}>
-            <a href={props.githublink} target="_blank">
+            <a rel="noreferrer" href={props.githublink} target="_blank">
               <FaGithub className="icons" />
             </a>
           </Col>
           <Col>
-            <a href={props.leetcodelink} target="_blank">
+            <a rel="noreferrer" href={props.leetcodelink} target="_blank">
               <SiLeetcode className="icons" />
             </a>
           </Col>
           <Col>
-            <a href={props.linkedinlink} target="_blank">
+            <a rel="noreferrer" href={props.linkedinlink} target="_blank">
               <FaLinkedin className="icons" />
             </a>
           </Col>
           <Col>
-            <a href={props.codeforcesLink} target="_blank">
+            <a rel="noreferrer" href={props.codeforcesLink} target="_blank">
               <SiCodeforces className="icons" />
             </a>
           </Col>
           <Col>
-            <a href={props.codechefLink} target="_blank">
+            <a rel="noreferrer" href={props.codechefLink} target="_blank">
               <SiCodechef className="icons" />
             </a>
           </Col>

@@ -4,7 +4,6 @@ import "./Card1.css"
 import { Card,FormControl,InputGroup,DropdownButton,CloseButton,Dropdown} from 'react-bootstrap'
 import DropdownStyles from '../cards/job/style/style.module.css';
 import ReviewModal from './ReviewModal';
-import { useHistory } from 'react-router-dom';
 import { getOwnUser } from '../../api/user';
 import { addJob, postReferral } from '../../api/jobListing';
   

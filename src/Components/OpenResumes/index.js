@@ -6,7 +6,6 @@ import { withRouter,useHistory } from 'react-router-dom';
 import { getReferral } from '../../api/referral';
 import ReactLoading from 'react-loading'
 import LoadingStyles from '../OpenJobs/Styles/style.module.css'
-import { Button } from 'react-bootstrap';
 
 
 const OpenResumes = (props) => {
@@ -18,7 +17,7 @@ const OpenResumes = (props) => {
     const [content,setContent] = useState(emptyContent);
     let history = useHistory();
 
-    const [compQ, setCompQ] = useState("");
+    // const [compQ, setCompQ] = useState("");
     const [loading,setLoading] = useState(true);
 
 
@@ -50,12 +49,12 @@ const OpenResumes = (props) => {
         setContent(emptyContent);
     }
 
-    function qerySubmit (e) {
-        console.log(compQ);
-        e.preventDefault();
-        history.push(`/referral/?company=${compQ}`);
-        setCompQ("");
-    }
+    // function qerySubmit (e) {
+    //     console.log(compQ);
+    //     e.preventDefault();
+    //     history.push(`/referral/?company=${compQ}`);
+    //     setCompQ("");
+    // }
 
     return <div className={styles.mainCard} >
         {/* <form className={styles.topForm} onSubmit={qerySubmit}>
