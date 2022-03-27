@@ -131,16 +131,6 @@ License details if any.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- CONTACT -->
-
-## Contact
-
-Aman Saini - [Linkedin - amansaini7999](https://linkedin.com/in/amansaini7999) - email@example.com
-
-Project Link: [https://github.com/amansaini7999/referralHub](https://github.com/amansaini7999/referralHub)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 <!-- ACKNOWLEDGMENTS -->
 
 ## Acknowledgments
