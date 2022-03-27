@@ -1,13 +1,13 @@
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/analytics';
 const firebaseConfig = {
-  apiKey: "AIzaSyAOlCn8H3UCqVtwc_pfeqgCm5hR24BRnN8",
-  authDomain: "referral-hub-18334.firebaseapp.com",
-  projectId: "referral-hub-18334",
-  storageBucket: "referral-hub-18334.appspot.com",
-  messagingSenderId: "641421664828",
-  appId: "1:641421664828:web:192c6708ea77c847775939",
-  measurementId: "G-R57F1TLP66"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID
 };
 
 firebase.initializeApp(firebaseConfig);
