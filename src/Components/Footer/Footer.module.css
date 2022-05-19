@@ -29,3 +29,24 @@
 .footer p {
   font-size: 14px;
 }
+
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .footer p {
+    margin: 1rem auto;
+  }
+
+  .footer h3 {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .logo {
+    font-size: 30px !important;
+  }
+}
